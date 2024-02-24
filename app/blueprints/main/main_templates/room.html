@@ -1,0 +1,49 @@
+{%extends 'base.html'%} {%block title%} Chat Room {%endblock%} {%block styles%}
+{%endblock%} {%block content%} {% with messages =
+get_flashed_messages(with_categories=true) %} {% if messages %}
+<ul class="flashes">
+  {% for category, message in messages %}
+  <li class="{{ category }}">{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %} {% endwith %}
+<div class="message-box">
+  BOX
+  <div class="messages" id="messages"></div>
+  <div class="input">
+    <input
+      type="text"
+      rows="2"
+      name="message"
+      id="message"
+      placeholder="Type here!"
+    />
+    <button type="button" name="send" id="send-btn" onClick="sendMessage()">
+      Send
+    </button>
+  </div>
+</div>
+
+<script type="text/javascript">
+  let socketio = io();
+
+  const messages = document.querySelector('#messages')
+
+  const createMessage = (name, msg) => {
+    const content = `
+    <div>
+        <span>
+            <strong>${name}</strong>: ${msg}
+        </span>
+        <span class="muted">
+                ${new Date().toLocaleString()}
+        </span>
+    </div>
+    `
+  }
+
+  const sendMessage = () => {
+    console.log('send');
+  };
+</script>
+{%endblock%}

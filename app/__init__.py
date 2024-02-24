@@ -17,7 +17,7 @@ def create_app():
     db.init_app(app)
     migrate = Migrate(app, db)
 
-    login_manager.login_view = 'auth.login'
+    login_manager.login_view = 'main.index'
     login_manager.login_message = 'Ya gotta be logged in to see that, bubs.'
     login_manager.login_message_category = 'warning'
 
