@@ -1,0 +1,10 @@
+{%extends 'base.html'%} {%block title%} Welcome! {%endblock%} {%block styles%}
+{%endblock%} {%block content%}
+<form method="POST">
+  <input type="text" name="username" id="username" value="{{name}}" placeholder="Username"/>
+  <input type="text" name="room" id="room" value="{{room}}"placeholder="Room"/>
+  <button type="submit" name="join" class="join">Join a room</button>
+  <button type="submit" name="create" class="create">Create a room</button>
+</form>
+
+{%endblock%}
