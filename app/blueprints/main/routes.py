@@ -2,7 +2,7 @@ from flask import request, render_template, redirect, url_for, session, flash
 from flask_login import login_required
 from . import main
 from ... import socketio
-from flask_socketio import join_room, leave_room, send, emit
+from flask_socketio import join_room, leave_room, emit
 import random
 from string import ascii_uppercase
 
@@ -37,8 +37,9 @@ def index():
         room = room_code
 
         if create != False:
-            room = gen_code(4)
-            rooms[room] = {'members': 0, "messages": {}}
+            if room not in rooms:
+                room = '0,0'
+                rooms[room] = {'members': 0, "messages": []}
         elif room_code not in rooms:
             flash('Room doesn\'t exist, bubs', 'error')
             return render_template('index.html', username=username, room_code=room_code)
@@ -52,7 +53,9 @@ def index():
 # @login_required
 @main.route('/room')
 def room():
-    return render_template('room.html')
+    room = session.get('room')
+    print(room)
+    return render_template('room.html', room=room, messages=rooms[room]['messages'])
 
 @socketio.on('connect')
 def joined(auth):
@@ -64,10 +67,14 @@ def joined(auth):
         leave_room(room)
         return
     join_room(room)
-    emit('status', {'msg': username + 'has entered the room.'}, room=room)
+    content = {
+    'username': username,
+    'message': 'has joined the room',
+    'type': 'status'
+}
+    emit('status', {'username': username, 'message': 'has entered the room'}, room=room)
     rooms[room]['members'] += 1
-    print(f'{username} joined room {room}')
-    print(rooms)
+    rooms[room]['messages'].append(content)
 
 @socketio.on('disconnect')
 def left():
@@ -76,14 +83,31 @@ def left():
     leave_room(room)
     if room in rooms:
         rooms[room]['members'] -= 1
-        if rooms[room]['members'] <= 0:
-            del rooms[room]
 
-    emit('status', {'msg': username + ' has left the room.'}, room=room)
-    print(f'{username} has left the room')
-    print(rooms)
+    content = {
+    'username': username,
+    'message': 'has left the room',
+    'type': 'status'
+}
 
-@socketio.on('text', namespace='/chat')
-def text(message):
+    emit('status', {'username': username, 'message': 'has left the room'}, room=room)
+    rooms[room]['messages'].append(content)
+
+@socketio.on('message')
+def message(data):
     room = session.get('room')
-    emit('message', {'msg': session.get('username') + ':' + message['msg']}, room=room)
+    if room not in rooms:
+        return
+    payload = {}
+    payload['command'] = data['data'].split(maxsplit=1)[0]
+    payload['data'] = data['data'].split(maxsplit=1)[1]
+ 
+    content = {
+        'username': session.get('username'),
+        'message': payload['data'],
+        'type': 'message'
+    }
+
+    if payload['command'] == 'say':
+        emit('message', {'username': content['username'], 'message': content['message']}, room=room)
+        rooms[room]['messages'].append(content)

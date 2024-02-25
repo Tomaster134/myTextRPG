@@ -1,0 +1,3 @@
+-start objectifying basic commands
+-make a 3x3 grid to "move" around in based on commands
+-ensure that commands that aren't publicly visible only go to the person that issued the command (ie look, examine, gear, etc)

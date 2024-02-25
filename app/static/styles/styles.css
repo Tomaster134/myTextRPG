@@ -1,9 +1,11 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.messages {
-    overflow-y: scroll;
+.overall-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
