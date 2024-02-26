@@ -21,7 +21,7 @@ def create_app():
     login_manager.login_message = 'Ya gotta be logged in to see that, bubs.'
     login_manager.login_message_category = 'warning'
 
-    from app.blueprints.main import main
+    from app.blueprints.main import main, events
     from app.blueprints.auth import auth
 
     app.register_blueprint(main)
