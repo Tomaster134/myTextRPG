@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+
+{%block title%} Sign Up {%endblock%}
+{%block style%}{%endblock%}
+{%block content%}
+<div class="form-container">
+<form method="POST">
+  {{ form.hidden_tag() }}
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      {{ form.username(class="form-control", id="username", placeholder="Username") }}
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        {{ form.email(class="form-control", id="email", placeholder="Email") }}
+      </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      {{ form.password(class="form-control", id="password", placeholder="Password") }}
+    </div>
+    {{ form.signup_btn(class="btn btn-primary")}}
+  </form>
+  {%include './includes/flash.html'%}
+</div>
+{%endblock%}

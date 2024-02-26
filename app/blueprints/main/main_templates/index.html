@@ -1,19 +1,10 @@
 {%extends 'base.html'%} {%block title%} Welcome! {%endblock%} {%block styles%}
 {%endblock%} {%block content%}
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    <ul class=flashes>
-    {% for category, message in messages %}
-      <li class="{{ category }}">{{ message }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
 <form method="POST">
   <input type="text" name="username" id="username" value="{{username}}" placeholder="Username"/>
   <input type="text" name="room" id="room" value="{{room}}"placeholder="Room"/>
-  <button type="submit" name="join" class="join">Join a room</button>
-  <button type="submit" name="create" class="create">Create a room</button>
+  <button type="submit" name="join" class="join">Start Playing!</button>
 </form>
+{%include './includes/flash.html'%}
 
 {%endblock%}
