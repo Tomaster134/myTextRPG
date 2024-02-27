@@ -49,10 +49,10 @@ def look(data):
 @socketio.event
 def test(data):
     sid = request.sid
-    emit('look', {'message': events.new_player.describe()})
+    emit('look', {'message': session.get('player_list')[0].describe()})
 
 @socketio.event
 def attack(data):
     sid = request.sid
-    events.new_player.damage()
+    session.get('player_list')[0].damage()
     emit('look', {'message': 'You hit the test for 10 damage'})

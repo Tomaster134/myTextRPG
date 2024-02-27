@@ -1,32 +1,55 @@
 INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
 INFO:werkzeug:[33mPress CTRL+C to quit[0m
-INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:06:41] "GET /socket.io/?EIO=4&transport=polling&t=Oth6ebc HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:06:41] "GET /socket.io/?EIO=4&transport=polling&t=Oth6efs&sid=FN_kLv1h3IVgR3xYAAAA HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:06:41] "GET /socket.io/?EIO=4&transport=polling&t=Oth6efv&sid=FN_kLv1h3IVgR3xYAAAA HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:06:41] "POST /socket.io/?EIO=4&transport=polling&t=Oth6efr&sid=FN_kLv1h3IVgR3xYAAAA HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:06:51] "GET /socket.io/?EIO=4&transport=websocket&sid=FN_kLv1h3IVgR3xYAAAA HTTP/1.1" 200 -
-ERROR:app:Exception on /logs [GET]
-Traceback (most recent call last):
-  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 1463, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 872, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 870, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 855, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\app\__init__.py", line 42, in logs
-    app.app.logger.debug("debug log info")
-    ^^^^^^^
-AttributeError: 'Flask' object has no attribute 'app'
-INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:06:51] "[35m[1mGET /logs HTTP/1.1[0m" 500 -
-INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:07:24] "GET /socket.io/?EIO=4&transport=polling&t=Oth6p9c HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:07:24] "POST /socket.io/?EIO=4&transport=polling&t=Oth6p9j&sid=ZaNUa7wGOB0UhTSDAAAC HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:07:24] "GET /socket.io/?EIO=4&transport=polling&t=Oth6p9k&sid=ZaNUa7wGOB0UhTSDAAAC HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:07:24] "GET /socket.io/?EIO=4&transport=polling&t=Oth6p9s&sid=ZaNUa7wGOB0UhTSDAAAC HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:07:43] "GET /socket.io/?EIO=4&transport=websocket&sid=ZaNUa7wGOB0UhTSDAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:09:59] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:09:59] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:09:59] "[33mGET /static/styles/ HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:10:01] "[32mPOST / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:10:01] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:10:01] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:10:01] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:10:01] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:10:01] "GET /socket.io/?EIO=4&transport=polling&t=OtiC3zC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:10:01] "POST /socket.io/?EIO=4&transport=polling&t=OtiC3zT&sid=7aDWsplfDAyDdazJAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:10:01] "GET /socket.io/?EIO=4&transport=polling&t=OtiC3zU&sid=7aDWsplfDAyDdazJAAAA HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:15:12] "GET /socket.io/?EIO=4&transport=polling&t=OtiDFwc HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:15:12] "POST /socket.io/?EIO=4&transport=polling&t=OtiDFwr&sid=kYWoa5TiR1Q0DFCGAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:15:12] "GET /socket.io/?EIO=4&transport=polling&t=OtiDFws&sid=kYWoa5TiR1Q0DFCGAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:15:20] "GET /socket.io/?EIO=4&transport=websocket&sid=kYWoa5TiR1Q0DFCGAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:15:20] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:15:20] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:15:20] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:15:20] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:15:20] "GET /socket.io/?EIO=4&transport=polling&t=OtiDHxj HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:15:20] "POST /socket.io/?EIO=4&transport=polling&t=OtiDHx-&sid=okVpHmR6HL05mHvhAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:15:20] "GET /socket.io/?EIO=4&transport=polling&t=OtiDHx_&sid=okVpHmR6HL05mHvhAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:15:20] "GET /socket.io/?EIO=4&transport=polling&t=OtiDHyO&sid=okVpHmR6HL05mHvhAAAC HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:16:59] "GET /socket.io/?EIO=4&transport=polling&t=OtiDg8n HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:16:59] "POST /socket.io/?EIO=4&transport=polling&t=OtiDg8-&sid=JtmVSwtuhLG7kLXzAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:16:59] "GET /socket.io/?EIO=4&transport=polling&t=OtiDg8_&sid=JtmVSwtuhLG7kLXzAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:16:59] "GET /socket.io/?EIO=4&transport=polling&t=OtiDg9M&sid=JtmVSwtuhLG7kLXzAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:17:10] "GET /socket.io/?EIO=4&transport=websocket&sid=JtmVSwtuhLG7kLXzAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:17:10] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:17:10] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:17:10] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:17:10] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:17:10] "GET /socket.io/?EIO=4&transport=polling&t=OtiDioS HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:17:10] "POST /socket.io/?EIO=4&transport=polling&t=OtiDioj&sid=voseqk7HAm7AWY-OAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:17:10] "GET /socket.io/?EIO=4&transport=polling&t=OtiDiok&sid=voseqk7HAm7AWY-OAAAC HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:21:15] "GET /socket.io/?EIO=4&transport=polling&t=OtiEeMN HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:21:15] "GET /socket.io/?EIO=4&transport=polling&t=OtiEeYh&sid=p3Zg08wmDHOF2fpWAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:21:15] "GET /socket.io/?EIO=4&transport=polling&t=OtiEeYt&sid=p3Zg08wmDHOF2fpWAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:21:15] "POST /socket.io/?EIO=4&transport=polling&t=OtiEeYg&sid=p3Zg08wmDHOF2fpWAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:28:31] "GET /socket.io/?EIO=4&transport=websocket&sid=p3Zg08wmDHOF2fpWAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:28:32] "GET /socket.io/?EIO=4&transport=polling&t=OtiGJKU HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:28:32] "POST /socket.io/?EIO=4&transport=polling&t=OtiGJKt&sid=N4tVeAaP3DZJTCorAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:28:32] "GET /socket.io/?EIO=4&transport=polling&t=OtiGJKu&sid=N4tVeAaP3DZJTCorAAAC HTTP/1.1" 200 -

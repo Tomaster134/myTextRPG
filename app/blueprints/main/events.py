@@ -3,14 +3,20 @@ from flask_login import current_user
 from ... import socketio
 from flask_socketio import join_room, leave_room, emit
 from .player import TestPlayer
+from .routes import clients
 
 new_player = TestPlayer('test')
+player_list = []
+player_list.append(new_player)
+session_player_list = tuple(player_list)
+print(session_player_list)
 
 @socketio.on('connect')
-def connect(auth):
+def connect():
     print('connection')
     username = session.get('username')
     location = session.get('location')
+    session['player_list'] = session_player_list
     join_room(location)
     print(f'joined {location}')
     content = {
@@ -20,6 +26,7 @@ def connect(auth):
 }
     emit('status', {'username': username, 'message': 'has entered the room'}, room=location)
     print(f'emitted {content} to {location}')
+    print(session['player_list'])
 
 @socketio.on('disconnect')
 def disconnect():
