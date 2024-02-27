@@ -2,8 +2,6 @@ from flask import request, render_template, redirect, url_for, session, flash
 from flask_login import login_required, current_user
 from . import main
 
-rooms = {}
-
 @main.route('/', methods=['POST', 'GET'])
 def index():
         if request.method == 'POST':

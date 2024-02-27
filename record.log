@@ -1,0 +1,32 @@
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:06:41] "GET /socket.io/?EIO=4&transport=polling&t=Oth6ebc HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:06:41] "GET /socket.io/?EIO=4&transport=polling&t=Oth6efs&sid=FN_kLv1h3IVgR3xYAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:06:41] "GET /socket.io/?EIO=4&transport=polling&t=Oth6efv&sid=FN_kLv1h3IVgR3xYAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:06:41] "POST /socket.io/?EIO=4&transport=polling&t=Oth6efr&sid=FN_kLv1h3IVgR3xYAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:06:51] "GET /socket.io/?EIO=4&transport=websocket&sid=FN_kLv1h3IVgR3xYAAAA HTTP/1.1" 200 -
+ERROR:app:Exception on /logs [GET]
+Traceback (most recent call last):
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\app\__init__.py", line 42, in logs
+    app.app.logger.debug("debug log info")
+    ^^^^^^^
+AttributeError: 'Flask' object has no attribute 'app'
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:06:51] "[35m[1mGET /logs HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:07:24] "GET /socket.io/?EIO=4&transport=polling&t=Oth6p9c HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:07:24] "POST /socket.io/?EIO=4&transport=polling&t=Oth6p9j&sid=ZaNUa7wGOB0UhTSDAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:07:24] "GET /socket.io/?EIO=4&transport=polling&t=Oth6p9k&sid=ZaNUa7wGOB0UhTSDAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:07:24] "GET /socket.io/?EIO=4&transport=polling&t=Oth6p9s&sid=ZaNUa7wGOB0UhTSDAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:07:43] "GET /socket.io/?EIO=4&transport=websocket&sid=ZaNUa7wGOB0UhTSDAAAC HTTP/1.1" 200 -

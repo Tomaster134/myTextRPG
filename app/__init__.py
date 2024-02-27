@@ -7,10 +7,12 @@ from config import Config
 from flask_login import LoginManager
 from app.models import db, User
 from flask_migrate import Migrate
+import logging
 
 socketio = SocketIO(async_mode='gevent')
 
 def create_app():
+    logging.basicConfig(filename='record.log', level=logging.DEBUG)
     app = Flask(__name__)
     app.config.from_object(Config)
 
@@ -33,6 +35,16 @@ def create_app():
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(user_id)
+    
+    @app.route('/logs')
+    def logs():
+        # showing different logging levels
+        app.app.logger.debug("debug log info")
+        app.app.logger.info("Info log information")
+        app.app.logger.warning("Warning log info")
+        app.app.logger.error("Error log info")
+        app.app.logger.critical("Critical log info")
+        return "testing logging levels."
 
     socketio.init_app(app)
     return app

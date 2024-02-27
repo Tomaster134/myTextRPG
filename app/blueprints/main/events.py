@@ -2,13 +2,13 @@ from flask import session
 from flask_login import current_user
 from ... import socketio
 from flask_socketio import join_room, leave_room, emit
-from .routes import rooms
+from .player import TestPlayer
 
+new_player = TestPlayer('test')
 
 @socketio.on('connect')
 def connect(auth):
     print('connection')
-    print(session.get('room'))
     username = session.get('username')
     location = session.get('location')
     join_room(location)

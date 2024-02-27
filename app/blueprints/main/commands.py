@@ -2,8 +2,8 @@ from flask import session, request
 from flask_login import current_user
 from ... import socketio
 from flask_socketio import join_room, leave_room, emit
-from .routes import rooms
 
+from . import events
 
 @socketio.event
 def move(data):
@@ -45,3 +45,14 @@ def look(data):
         emit('look', {'message': location}, to=sid)
     else:
         emit('look', {'message': 'this will eventually be a call to a class\'s .description to return a look statement.'}, to=sid)
+
+@socketio.event
+def test(data):
+    sid = request.sid
+    emit('look', {'message': events.new_player.describe()})
+
+@socketio.event
+def attack(data):
+    sid = request.sid
+    events.new_player.damage()
+    emit('look', {'message': 'You hit the test for 10 damage'})
