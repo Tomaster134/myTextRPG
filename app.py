@@ -1,6 +1,7 @@
 from app import create_app, socketio
+from gevent.pywsgi import WSGIServer
 
-application = create_app()
+app = create_app()
 
 if __name__ == '__main__':
-    socketio.run(application)
+    socketio.run(app)

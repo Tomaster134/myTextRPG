@@ -5,7 +5,7 @@ from flask_login import LoginManager
 from app.models import db, User
 from flask_migrate import Migrate
 
-socketio = SocketIO()
+socketio = SocketIO(async_mode='gevent')
 
 def create_app():
     app = Flask(__name__)

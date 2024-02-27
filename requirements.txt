@@ -9,7 +9,8 @@ Flask-Login==0.6.3
 Flask-Migrate==4.0.5
 Flask-SocketIO==5.3.6
 Flask-SQLAlchemy==3.1.1
-Flask-WTF==1.2.1
+gevent==24.2.1
+gevent-websocket==0.10.1
 greenlet==3.0.3
 gunicorn==21.2.0
 h11==0.14.0
@@ -24,7 +25,7 @@ python-engineio==4.9.0
 python-socketio==5.11.1
 simple-websocket==1.0.0
 SQLAlchemy==2.0.27
-typing_extensions==4.9.0
+typing_extensions==4.10.0
 Werkzeug==3.0.1
 wsproto==1.2.0
 WTForms==3.1.2
