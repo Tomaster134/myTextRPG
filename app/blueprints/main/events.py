@@ -1,21 +1,23 @@
-from flask import session
+from flask import session, request
 from flask_login import current_user
 from ... import socketio
 from flask_socketio import join_room, leave_room, emit
 from .player import TestPlayer
-from .routes import clients
 
 new_player = TestPlayer('test')
 player_list = []
 player_list.append(new_player)
 session_player_list = tuple(player_list)
 print(session_player_list)
+client_list = []
 
 @socketio.on('connect')
 def connect():
     print('connection')
     username = session.get('username')
     location = session.get('location')
+    client_list.append(request.sid)
+    print(f'client list is {client_list}')
     session['player_list'] = session_player_list
     join_room(location)
     print(f'joined {location}')
@@ -35,6 +37,8 @@ def disconnect():
     current_user.location = session.get('location')
     current_user.save()
     print(f'{current_user} location saved')
+    client_list.pop(client_list.index(request.sid))
+    print(f'client list is {client_list}')
     leave_room(room)
 
     content = {
