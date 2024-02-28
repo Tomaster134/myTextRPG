@@ -1,13 +1,28 @@
--start objectifying basic commands - In Progress
--make a 3x3 grid to "move" around in based on commands -WIP
--ensure that commands that aren't publicly visible only go to the person that issued the command (ie look, examine, gear, etc) -In Progress
 
--Build class for rooms. Need to have storage for items and players and NPCs
--Make account creation page. Require an account before being able to the join the rooms
-    --One account with a live player per user
--Rework index.html to have links to everything, remove input form for chat room. Need to just be able to start playing
--Add some basic UI stuff. Health, location, MAYBE an inventory sidebar
--Figure out why TF pressing enter doesn't enter your input -COMPLETED
--Tackle command parsing on the JavaScript end
+Game Engine:
+    ->start objectifying basic commands - In Progress
+        --Rework socketio events to cut down on clutter - In Progress
+    ->make a 3x3 grid to "move" around in based on commands - In Progress
+    ->ensure that commands that aren't publicly visible only go to the person that issued the command (ie look, examine, gear, etc) -In Progress
+    ->Build classes for all entities
+        --Rooms
+        --Players
+        --NPCs
+    ->Tackle command parsing on the JavaScript end
+        --Consider using an parser module
 
+Website:
+    ->Make account creation page. Require an account before being able to the join the rooms
+        --One account with a live player per user
+    ->Rework index.html to have links to everything, remove input form for chat room. Need to just be able to start playing
+    ->Redo CSS styling
+
+User Interface:
+    ->Add some basic UI stuff. Health, location, MAYBE an inventory sidebar
+    ->Figure out why TF pressing enter doesn't enter your input -COMPLETED
+    ->Add map to game interface
+
+Databases:
+    ->SQL or NoSQL?
+    ->Figure out models for SQL regardless
 
