@@ -4,7 +4,9 @@ from ... import socketio
 from flask_socketio import join_room, leave_room, emit
 from . import main
 import app.blueprints.main.events as events
+from random import randint
 
+#First page user sees. Should be a blurb on the game, and direct users towards either logging in, signing up, creating a character, or changing their active character
 @main.route('/', methods=['POST', 'GET'])
 def index():
         if request.method == 'POST':
@@ -21,6 +23,7 @@ def index():
 
         else: return render_template('index.html')
 
+#Function that runs when there are players in the world. Uses sleep and will eventually call all objects that need to execute methods without user input for world ambience. When no players are present should break and stop the function
 def world_timer():
      socketio.sleep(10)
      count = 0
@@ -28,10 +31,14 @@ def world_timer():
             if events.client_list:
                 print('world timer')
                 socketio.emit('look', {'message': f'this is a global emitter on count {count}'})
+                for each in events.player_list:
+                     if randint(1,5) == 3:
+                        each.describe()
                 count += 1
                 socketio.sleep(10)
             else: break
 
+#Route for the room. Calls the world timer function if the client list is empty to begin a world timer.
 @main.route('/room')
 def room():
     print(f'session for app is {session}')

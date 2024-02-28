@@ -3,6 +3,7 @@ let socketio = io();
 const messages = document.querySelector("#messages");
 const form = document.querySelector('#input-form')
 
+//Section needs to be revamped to maybe handle multiple server outputs with regards to formatting
 const createMessage = (username, msg) => {
   const content = `
     <div class="text">
@@ -45,6 +46,7 @@ const createLook = (msg) => {
   messages.innerHTML += content;
 };
 
+//Needs to be revamped to have one, maybe two ways of outputting server emits
 socketio.on("message", (data) => {
   createMessage(data.username, data.message);
 });
@@ -57,6 +59,7 @@ socketio.on("look", (data) => {
   createLook(data.message);
 });
 
+//This section needs to be revamped to parse user input and package it in a uniform way so the server can handle input properly
 form.addEventListener("submit", (event) => {
   event.preventDefault()
   const message = document.querySelector("#message");

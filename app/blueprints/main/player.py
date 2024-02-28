@@ -4,7 +4,7 @@ from ... import socketio
 from flask_socketio import join_room, leave_room, emit
 
 
-# Might need this? Unsure.
+#This will probably be eliminated in favor of the objects.py
 
 class TestPlayer ():
     def __init__(self, name) -> None:
