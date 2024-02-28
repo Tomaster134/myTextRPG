@@ -4,7 +4,7 @@ room.css {%endblock%} {%block content%}
   <h2 class="room-header">Room: {{session.location}}</h2>
   <div class="message-box">
     <div class="messages" id="messages"></div>
-    <div class="input">
+    <form class="input" id="input-form">
       <input
         type="text"
         rows="2"
@@ -12,10 +12,10 @@ room.css {%endblock%} {%block content%}
         id="message"
         placeholder="Type here!"
       />
-      <button type="button" name="send" id="send-btn" onClick="sendMessage()">
+      <button id="send-btn">
         Send
       </button>
-    </div>
+    </form>
   </div>
 </div>
 {%include './includes/flash.html'%}

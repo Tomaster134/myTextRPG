@@ -37,6 +37,7 @@ def disconnect():
     current_user.location = session.get('location')
     current_user.save()
     print(f'{current_user} location saved')
+    socketio.sleep(1)
     client_list.pop(client_list.index(request.sid))
     print(f'client list is {client_list}')
     leave_room(room)

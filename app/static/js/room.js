@@ -1,9 +1,10 @@
 let socketio = io();
 
-  const messages = document.querySelector("#messages");
+const messages = document.querySelector("#messages");
+const form = document.querySelector('#input-form')
 
-  const createMessage = (username, msg) => {
-    const content = `
+const createMessage = (username, msg) => {
+  const content = `
     <div class="text">
         <span class="msg-text">
             <strong>${username}</strong>: ${msg}
@@ -13,11 +14,11 @@ let socketio = io();
         </span>
     </div>
     `;
-    messages.innerHTML += content;
-  };
+  messages.innerHTML += content;
+};
 
-  const createStatus = (username, msg) => {
-    const content = `
+const createStatus = (username, msg) => {
+  const content = `
     <div class="text">
         <span class="msg-text">
             ${username} ${msg}
@@ -27,11 +28,11 @@ let socketio = io();
         </span>
     </div>
     `;
-    messages.innerHTML += content;
-  };
+  messages.innerHTML += content;
+};
 
-  const createLook = (msg) => {
-    const content = `
+const createLook = (msg) => {
+  const content = `
     <div class="text">
         <span class="msg-text">
             ${msg}
@@ -41,33 +42,34 @@ let socketio = io();
         </span>
     </div>
     `;
-    messages.innerHTML += content;
+  messages.innerHTML += content;
+};
+
+socketio.on("message", (data) => {
+  createMessage(data.username, data.message);
+});
+
+socketio.on("status", (data) => {
+  createStatus(data.username, data.message);
+});
+
+socketio.on("look", (data) => {
+  createLook(data.message);
+});
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault()
+  const message = document.querySelector("#message");
+  if (message.value == "") return;
+  const payload = {
+    command: message.value.substr(0, message.value.indexOf(" ")),
+    data: message.value.substr(message.value.indexOf(" ") + 1),
   };
-
-  socketio.on("message", (data) => {
-    createMessage(data.username, data.message);
-  });
-
-  socketio.on("status", (data) => {
-    createStatus(data.username, data.message);
-  });
-
-  socketio.on("look", (data) => {
-    createLook(data.message);
-  });
-
-  const sendMessage = () => {
-    const message = document.querySelector("#message");
-    if (message.value == "") return;
-    const payload = {
-      command: message.value.substr(0, message.value.indexOf(" ")),
-      data: message.value.substr(message.value.indexOf(" ")+1),
-    }
-    if (payload.command === '' && payload.data) {
-      payload.command = payload.data;
-      payload.data = ''
-    }
-    console.log(payload)
-    socketio.emit(payload.command, payload);
-    message.value = "";
-  };
+  if (payload.command === "" && payload.data) {
+    payload.command = payload.data;
+    payload.data = "";
+  }
+  console.log(payload);
+  socketio.emit(payload.command, payload);
+  message.value = "";
+})

@@ -327,3 +327,476 @@ INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 17:22:01] "POST /socket.io/?EIO=4&trans
 INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 17:22:01] "GET /socket.io/?EIO=4&transport=polling&t=OtigHUW.0&sid=scnEW7QWZSLMSgkWAAAE HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 17:22:01] "GET /socket.io/?EIO=4&transport=polling&t=OtigHUh&sid=scnEW7QWZSLMSgkWAAAE HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 17:22:21] "GET /socket.io/?EIO=4&transport=websocket&sid=scnEW7QWZSLMSgkWAAAE HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:02] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:02] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:02] "[33mGET /static/styles/ HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:02] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:04] "[32mPOST / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:04] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:04] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:04] "[33mGET /static/styles/ HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:06] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:06] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:06] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:06] "[33mGET /static/styles/ HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:08] "[32mPOST / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:08] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:08] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:08] "GET /static/styles/room.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:08] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:08] "GET /socket.io/?EIO=4&transport=polling&t=Otj1Qkh HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:08] "POST /socket.io/?EIO=4&transport=polling&t=Otj1Qko&sid=89B2RngtX3dprX-4AAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:08] "GET /socket.io/?EIO=4&transport=polling&t=Otj1Qko.0&sid=89B2RngtX3dprX-4AAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:12] "GET /socket.io/?EIO=4&transport=websocket&sid=89B2RngtX3dprX-4AAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:12] "GET /room?message=say+test HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:12] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:12] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:12] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:12] "GET /socket.io/?EIO=4&transport=polling&t=Otj1RlQ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:12] "POST /socket.io/?EIO=4&transport=polling&t=Otj1RlU&sid=5tPm4A8XOeLqmoNkAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:12] "GET /socket.io/?EIO=4&transport=polling&t=Otj1RlU.0&sid=5tPm4A8XOeLqmoNkAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:22] "GET /socket.io/?EIO=4&transport=websocket&sid=5tPm4A8XOeLqmoNkAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:22] "GET /room?message=say+sup HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:22] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:22] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:22] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:22] "GET /socket.io/?EIO=4&transport=polling&t=Otj1UIC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:22] "POST /socket.io/?EIO=4&transport=polling&t=Otj1UIH&sid=F6FlBp-ZkJRFRPoXAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:22] "GET /socket.io/?EIO=4&transport=polling&t=Otj1UIH.0&sid=F6FlBp-ZkJRFRPoXAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:58] "GET /socket.io/?EIO=4&transport=websocket&sid=F6FlBp-ZkJRFRPoXAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:58] "GET /socket.io/?EIO=4&transport=polling&t=Otj1ctY HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:58] "POST /socket.io/?EIO=4&transport=polling&t=Otj1cug&sid=4NQC693Ruly1D4NKAAAG HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:58] "GET /socket.io/?EIO=4&transport=polling&t=Otj1cug.0&sid=4NQC693Ruly1D4NKAAAG HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:59] "GET /socket.io/?EIO=4&transport=websocket&sid=4NQC693Ruly1D4NKAAAG HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:59] "GET /socket.io/?EIO=4&transport=polling&t=Otj1dEU HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:59] "POST /socket.io/?EIO=4&transport=polling&t=Otj1dFK&sid=Yrmc0pdK9j858mYRAAAI HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:03:59] "GET /socket.io/?EIO=4&transport=polling&t=Otj1dFL&sid=Yrmc0pdK9j858mYRAAAI HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:04:00] "GET /socket.io/?EIO=4&transport=websocket&sid=Yrmc0pdK9j858mYRAAAI HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:51] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:51] "GET /static/styles/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:51] "[33mGET /static/styles/ HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:52] "[32mPOST / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:52] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:52] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:52] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:52] "GET /static/js/room.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:52] "GET /socket.io/?EIO=4&transport=polling&t=Otj2HTM HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:52] "POST /socket.io/?EIO=4&transport=polling&t=Otj2HTQ&sid=-3bWk28QsiWosihCAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:52] "GET /socket.io/?EIO=4&transport=polling&t=Otj2HTQ.0&sid=-3bWk28QsiWosihCAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:56] "GET /socket.io/?EIO=4&transport=websocket&sid=-3bWk28QsiWosihCAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:56] "GET /room?message=say+test HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:56] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:56] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:56] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:56] "GET /socket.io/?EIO=4&transport=polling&t=Otj2INL HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:56] "POST /socket.io/?EIO=4&transport=polling&t=Otj2INT&sid=8Mzb5p-sobPjhg-hAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:06:56] "GET /socket.io/?EIO=4&transport=polling&t=Otj2INT.0&sid=8Mzb5p-sobPjhg-hAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:07] "GET /socket.io/?EIO=4&transport=websocket&sid=8Mzb5p-sobPjhg-hAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:07] "GET /socket.io/?EIO=4&transport=polling&t=Otj2LBl HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:07] "POST /socket.io/?EIO=4&transport=polling&t=Otj2LCi&sid=z3Sghbrj4quHFMQUAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:07] "GET /socket.io/?EIO=4&transport=polling&t=Otj2LCi.0&sid=z3Sghbrj4quHFMQUAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:08] "GET /socket.io/?EIO=4&transport=websocket&sid=z3Sghbrj4quHFMQUAAAE HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:46] "[32mPOST / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:46] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:46] "GET /static/js/room.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:46] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:46] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:46] "GET /socket.io/?EIO=4&transport=polling&t=Otj2UaP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:46] "POST /socket.io/?EIO=4&transport=polling&t=Otj2UaV&sid=lZRQ71w0JROPQY2yAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:46] "GET /socket.io/?EIO=4&transport=polling&t=Otj2UaW&sid=lZRQ71w0JROPQY2yAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:46] "GET /socket.io/?EIO=4&transport=polling&t=Otj2Uae&sid=lZRQ71w0JROPQY2yAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:58] "GET /socket.io/?EIO=4&transport=websocket&sid=lZRQ71w0JROPQY2yAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:59] "GET /room?message=say+test HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:59] "GET /static/styles/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:59] "GET /static/styles/room.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:59] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:59] "GET /socket.io/?EIO=4&transport=polling&t=Otj2Xis HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:59] "POST /socket.io/?EIO=4&transport=polling&t=Otj2Xi-&sid=mNkGF3_Twzo8NK4xAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:59] "GET /socket.io/?EIO=4&transport=polling&t=Otj2Xi-.0&sid=mNkGF3_Twzo8NK4xAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:07:59] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:08:08] "GET /socket.io/?EIO=4&transport=websocket&sid=mNkGF3_Twzo8NK4xAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:08:08] "GET /socket.io/?EIO=4&transport=polling&t=Otj2a1a HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:08:08] "POST /socket.io/?EIO=4&transport=polling&t=Otj2a25&sid=a7vtsCFzaUhD5I94AAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:08:08] "GET /socket.io/?EIO=4&transport=polling&t=Otj2a26&sid=a7vtsCFzaUhD5I94AAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:08:08] "GET /socket.io/?EIO=4&transport=polling&t=Otj2a2K&sid=a7vtsCFzaUhD5I94AAAE HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:21] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:21] "GET /static/styles/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:21] "GET /static/styles/room.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:21] "GET /static/js/room.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:21] "GET /socket.io/?EIO=4&transport=polling&t=Otj34cO HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:21] "POST /socket.io/?EIO=4&transport=polling&t=Otj34cU&sid=LFsQAKfEd0Lbt_d5AAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:21] "GET /socket.io/?EIO=4&transport=polling&t=Otj34cV&sid=LFsQAKfEd0Lbt_d5AAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:25] "GET /static/styles/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:25] "GET /static/styles/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:30] "GET /socket.io/?EIO=4&transport=websocket&sid=LFsQAKfEd0Lbt_d5AAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:30] "GET /room?message=say+test HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:31] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:31] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:31] "GET /static/styles/room.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:31] "GET /socket.io/?EIO=4&transport=polling&t=Otj36ph HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:31] "POST /socket.io/?EIO=4&transport=polling&t=Otj36pq&sid=19HZ4B2fF9gBk7h1AAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:31] "GET /socket.io/?EIO=4&transport=polling&t=Otj36pq.0&sid=19HZ4B2fF9gBk7h1AAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:34] "GET /socket.io/?EIO=4&transport=websocket&sid=19HZ4B2fF9gBk7h1AAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:34] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:34] "GET /socket.io/?EIO=4&transport=polling&t=Otj37bB HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:34] "POST /socket.io/?EIO=4&transport=polling&t=Otj37df&sid=AId2oR0YtHFlLtDgAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:10:34] "GET /socket.io/?EIO=4&transport=polling&t=Otj37dg&sid=AId2oR0YtHFlLtDgAAAE HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:02] "GET /socket.io/?EIO=4&transport=polling&t=Otj3EGQ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:02] "GET /socket.io/?EIO=4&transport=polling&t=Otj3EaM.0&sid=6qafjK85MXGWWPWfAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:02] "GET /socket.io/?EIO=4&transport=polling&t=Otj3EaR&sid=6qafjK85MXGWWPWfAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:03] "POST /socket.io/?EIO=4&transport=polling&t=Otj3EaM&sid=6qafjK85MXGWWPWfAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:05] "GET /socket.io/?EIO=4&transport=websocket&sid=6qafjK85MXGWWPWfAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:05] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:05] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:05] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:05] "GET /static/js/room.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:05] "GET /socket.io/?EIO=4&transport=polling&t=Otj3FBP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:05] "POST /socket.io/?EIO=4&transport=polling&t=Otj3FBU&sid=YXcyemQJZ7PFdQLNAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:05] "GET /socket.io/?EIO=4&transport=polling&t=Otj3FBU.0&sid=YXcyemQJZ7PFdQLNAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:07] "GET /socket.io/?EIO=4&transport=websocket&sid=YXcyemQJZ7PFdQLNAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:08] "GET /room?message=say+test HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:08] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:08] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:08] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:08] "GET /socket.io/?EIO=4&transport=polling&t=Otj3Fsj HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:08] "POST /socket.io/?EIO=4&transport=polling&t=Otj3Fsn&sid=Ng-89P4QbaDLe8kVAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:08] "GET /socket.io/?EIO=4&transport=polling&t=Otj3Fso&sid=Ng-89P4QbaDLe8kVAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:08] "GET /socket.io/?EIO=4&transport=polling&t=Otj3Fsx&sid=Ng-89P4QbaDLe8kVAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:09] "GET /socket.io/?EIO=4&transport=websocket&sid=Ng-89P4QbaDLe8kVAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:09] "GET /socket.io/?EIO=4&transport=polling&t=Otj3GJq HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:09] "POST /socket.io/?EIO=4&transport=polling&t=Otj3GKh&sid=gs8Lz6XdKldAhNk5AAAG HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:10] "GET /socket.io/?EIO=4&transport=polling&t=Otj3GKi&sid=gs8Lz6XdKldAhNk5AAAG HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:10] "GET /socket.io/?EIO=4&transport=polling&t=Otj3GKn&sid=gs8Lz6XdKldAhNk5AAAG HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:17] "GET /socket.io/?EIO=4&transport=websocket&sid=gs8Lz6XdKldAhNk5AAAG HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:20] "[32mPOST / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:20] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:20] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:20] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:20] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:20] "GET /socket.io/?EIO=4&transport=polling&t=Otj3I_c HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:20] "POST /socket.io/?EIO=4&transport=polling&t=Otj3I_k&sid=VXfV5zKfwF2whO2TAAAI HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:20] "GET /socket.io/?EIO=4&transport=polling&t=Otj3I_k.0&sid=VXfV5zKfwF2whO2TAAAI HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:39] "GET /socket.io/?EIO=4&transport=websocket&sid=VXfV5zKfwF2whO2TAAAI HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:39] "GET /room?message=say+test HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:39] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:39] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:39] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:39] "GET /socket.io/?EIO=4&transport=polling&t=Otj3NWl HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:39] "POST /socket.io/?EIO=4&transport=polling&t=Otj3NWs&sid=nxQUDVB5XhPAzwjPAAAK HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:11:39] "GET /socket.io/?EIO=4&transport=polling&t=Otj3NWs.0&sid=nxQUDVB5XhPAzwjPAAAK HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:42] "GET /socket.io/?EIO=4&transport=polling&t=Otj3r4s HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:42] "GET /socket.io/?EIO=4&transport=polling&t=Otj3rSx&sid=qiUf29TNpdjDIdwwAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:42] "GET /socket.io/?EIO=4&transport=polling&t=Otj3rS_&sid=qiUf29TNpdjDIdwwAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:42] "POST /socket.io/?EIO=4&transport=polling&t=Otj3rSw&sid=qiUf29TNpdjDIdwwAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:44] "GET /socket.io/?EIO=4&transport=websocket&sid=qiUf29TNpdjDIdwwAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:45] "GET /room?message=say+test HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:45] "GET /static/js/room.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:45] "GET /static/styles/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:45] "GET /static/styles/room.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:45] "GET /socket.io/?EIO=4&transport=polling&t=Otj3sCP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:45] "POST /socket.io/?EIO=4&transport=polling&t=Otj3sCW&sid=UKVuNL92JBkvbsq3AAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:45] "GET /socket.io/?EIO=4&transport=polling&t=Otj3sCW.0&sid=UKVuNL92JBkvbsq3AAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:48] "GET /socket.io/?EIO=4&transport=websocket&sid=UKVuNL92JBkvbsq3AAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:48] "GET /room?message=say+test HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:48] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:48] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:48] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:48] "GET /socket.io/?EIO=4&transport=polling&t=Otj3t32 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:48] "POST /socket.io/?EIO=4&transport=polling&t=Otj3t37&sid=rZg0XFlL6oErRkmjAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:48] "GET /socket.io/?EIO=4&transport=polling&t=Otj3t37.0&sid=rZg0XFlL6oErRkmjAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:51] "GET /socket.io/?EIO=4&transport=websocket&sid=rZg0XFlL6oErRkmjAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:51] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:51] "GET /socket.io/?EIO=4&transport=polling&t=Otj3tgG HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:51] "POST /socket.io/?EIO=4&transport=polling&t=Otj3tiX&sid=VdOZWy5L7E9GsHFjAAAG HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:51] "GET /socket.io/?EIO=4&transport=polling&t=Otj3tiY&sid=VdOZWy5L7E9GsHFjAAAG HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:51] "GET /socket.io/?EIO=4&transport=polling&t=Otj3tie&sid=VdOZWy5L7E9GsHFjAAAG HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:13:52] "GET /socket.io/?EIO=4&transport=websocket&sid=VdOZWy5L7E9GsHFjAAAG HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:14:18] "[32mPOST / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:14:18] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:14:18] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:14:18] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:14:18] "GET /static/js/room.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:14:18] "GET /socket.io/?EIO=4&transport=polling&t=Otj3-Nk HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:14:18] "POST /socket.io/?EIO=4&transport=polling&t=Otj3-Nr&sid=eZyGQyq1UmGLF_zYAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:14:18] "GET /socket.io/?EIO=4&transport=polling&t=Otj3-Nr.0&sid=eZyGQyq1UmGLF_zYAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:14:18] "GET /socket.io/?EIO=4&transport=polling&t=Otj3-Ny&sid=eZyGQyq1UmGLF_zYAAAA HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:18:52] "GET /socket.io/?EIO=4&transport=polling&t=Otj50yQ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:18:52] "GET /socket.io/?EIO=4&transport=polling&t=Otj51CX&sid=MsXW2E2RNxAgqkh1AAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:18:52] "GET /socket.io/?EIO=4&transport=polling&t=Otj51Cc&sid=MsXW2E2RNxAgqkh1AAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:18:52] "POST /socket.io/?EIO=4&transport=polling&t=Otj51CW&sid=MsXW2E2RNxAgqkh1AAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:18:57] "GET /socket.io/?EIO=4&transport=websocket&sid=MsXW2E2RNxAgqkh1AAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:18:57] "[32mPOST / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:18:57] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:18:57] "GET /static/js/room.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:18:57] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:18:57] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:18:57] "GET /socket.io/?EIO=4&transport=polling&t=Otj52Vw HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:18:57] "POST /socket.io/?EIO=4&transport=polling&t=Otj52W0&sid=k23UsBv9i4uI_M04AAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:18:57] "GET /socket.io/?EIO=4&transport=polling&t=Otj52W0.0&sid=k23UsBv9i4uI_M04AAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:18:57] "GET /socket.io/?EIO=4&transport=polling&t=Otj52W7&sid=k23UsBv9i4uI_M04AAAC HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:25:32] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:25:32] "GET /static/styles/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:25:32] "GET /static/styles/room.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:25:32] "GET /static/js/room.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:25:32] "GET /socket.io/?EIO=4&transport=polling&t=Otj6YrP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:25:32] "POST /socket.io/?EIO=4&transport=polling&t=Otj6YrW&sid=ZGB3qmhUIM5bfG5KAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:25:32] "GET /socket.io/?EIO=4&transport=polling&t=Otj6YrW.0&sid=ZGB3qmhUIM5bfG5KAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:26:06] "GET /socket.io/?EIO=4&transport=websocket&sid=ZGB3qmhUIM5bfG5KAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:26:06] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:26:06] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:26:06] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:26:06] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:26:06] "GET /socket.io/?EIO=4&transport=polling&t=Otj6hCh HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:26:06] "POST /socket.io/?EIO=4&transport=polling&t=Otj6hCp&sid=sQ4mGjZPNlCYOtl9AAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:26:06] "GET /socket.io/?EIO=4&transport=polling&t=Otj6hCp.0&sid=sQ4mGjZPNlCYOtl9AAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:26:06] "GET /socket.io/?EIO=4&transport=polling&t=Otj6hCw&sid=sQ4mGjZPNlCYOtl9AAAC HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:27:53] "GET /socket.io/?EIO=4&transport=polling&t=Otj756- HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:27:53] "GET /socket.io/?EIO=4&transport=polling&t=Otj75Qy.0&sid=_J4qmrjrW-XTyRTtAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:27:53] "GET /socket.io/?EIO=4&transport=polling&t=Otj75R0&sid=_J4qmrjrW-XTyRTtAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:27:54] "POST /socket.io/?EIO=4&transport=polling&t=Otj75Qy&sid=_J4qmrjrW-XTyRTtAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:27:59] "GET /socket.io/?EIO=4&transport=websocket&sid=_J4qmrjrW-XTyRTtAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:27:59] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:27:59] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:27:59] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:27:59] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:27:59] "GET /socket.io/?EIO=4&transport=polling&t=Otj76oe HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:27:59] "POST /socket.io/?EIO=4&transport=polling&t=Otj76oi&sid=MmpIKLWLqHSv5wPQAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:27:59] "GET /socket.io/?EIO=4&transport=polling&t=Otj76oi.0&sid=MmpIKLWLqHSv5wPQAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:28:21] "GET /socket.io/?EIO=4&transport=websocket&sid=MmpIKLWLqHSv5wPQAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:28:21] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:28:21] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:28:21] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:28:21] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:28:21] "GET /socket.io/?EIO=4&transport=polling&t=Otj7C9w HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:28:21] "POST /socket.io/?EIO=4&transport=polling&t=Otj7CAz&sid=wPm2lVae3W7W2aRqAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:28:21] "GET /socket.io/?EIO=4&transport=polling&t=Otj7CAz.0&sid=wPm2lVae3W7W2aRqAAAE HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:28:52] "GET /socket.io/?EIO=4&transport=polling&t=Otj7JOb HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:28:52] "GET /socket.io/?EIO=4&transport=polling&t=Otj7Jij&sid=r58t6iMUP6PXKK_TAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:28:52] "GET /socket.io/?EIO=4&transport=polling&t=Otj7Jim&sid=r58t6iMUP6PXKK_TAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:28:52] "POST /socket.io/?EIO=4&transport=polling&t=Otj7Jii&sid=r58t6iMUP6PXKK_TAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:28:55] "GET /socket.io/?EIO=4&transport=websocket&sid=r58t6iMUP6PXKK_TAAAA HTTP/1.1" 200 -
+ERROR:app:Exception on /room [GET]
+Traceback (most recent call last):
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\app\blueprints\main\routes.py", line 39, in room
+    if thread == None:
+       ^^^^^^
+NameError: name 'thread' is not defined
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:28:55] "[35m[1mGET /room HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:30:31] "[32mPOST / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:30:31] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:30:31] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:30:31] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:30:31] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:30:31] "GET /socket.io/?EIO=4&transport=polling&t=Otj7h-A HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:30:31] "POST /socket.io/?EIO=4&transport=polling&t=Otj7h-F&sid=RXNjPv9ZUyftxy8wAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:30:31] "GET /socket.io/?EIO=4&transport=polling&t=Otj7h-F.0&sid=RXNjPv9ZUyftxy8wAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:30:45] "GET /socket.io/?EIO=4&transport=websocket&sid=RXNjPv9ZUyftxy8wAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:30:45] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:30:45] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:30:45] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:30:45] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:30:45] "GET /socket.io/?EIO=4&transport=polling&t=Otj7lME HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:30:45] "POST /socket.io/?EIO=4&transport=polling&t=Otj7lMI&sid=hfFOyXSz6a0b-I4OAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:30:45] "GET /socket.io/?EIO=4&transport=polling&t=Otj7lMI.0&sid=hfFOyXSz6a0b-I4OAAAC HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:19] "GET /socket.io/?EIO=4&transport=polling&t=Otj85Ss HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:20] "GET /socket.io/?EIO=4&transport=polling&t=Otj86OX.0&sid=iyjSQvBKeDFH7r8SAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:20] "GET /socket.io/?EIO=4&transport=polling&t=Otj86Ob&sid=iyjSQvBKeDFH7r8SAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:20] "POST /socket.io/?EIO=4&transport=polling&t=Otj86OX&sid=iyjSQvBKeDFH7r8SAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:24] "GET /socket.io/?EIO=4&transport=websocket&sid=iyjSQvBKeDFH7r8SAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:24] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:24] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:24] "GET /static/styles/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:24] "GET /static/styles/room.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:24] "GET /socket.io/?EIO=4&transport=polling&t=Otj87R4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:24] "POST /socket.io/?EIO=4&transport=polling&t=Otj87R9&sid=bianm7NukfsiTDvcAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:24] "GET /socket.io/?EIO=4&transport=polling&t=Otj87R9.0&sid=bianm7NukfsiTDvcAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:27] "GET /socket.io/?EIO=4&transport=websocket&sid=bianm7NukfsiTDvcAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:27] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:27] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:27] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:27] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:27] "GET /socket.io/?EIO=4&transport=polling&t=Otj88KP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:27] "POST /socket.io/?EIO=4&transport=polling&t=Otj88KU&sid=Wdn_TRwLL1KjZEupAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:27] "GET /socket.io/?EIO=4&transport=polling&t=Otj88KV&sid=Wdn_TRwLL1KjZEupAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:27] "GET /socket.io/?EIO=4&transport=polling&t=Otj88Ke&sid=Wdn_TRwLL1KjZEupAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:54] "GET /socket.io/?EIO=4&transport=websocket&sid=Wdn_TRwLL1KjZEupAAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:56] "[32mPOST / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:56] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:56] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:56] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:56] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:56] "GET /socket.io/?EIO=4&transport=polling&t=Otj8FHa HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:56] "POST /socket.io/?EIO=4&transport=polling&t=Otj8FHf&sid=ufyTaKBD8xbNITGmAAAG HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:32:56] "GET /socket.io/?EIO=4&transport=polling&t=Otj8FHf.0&sid=ufyTaKBD8xbNITGmAAAG HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:15] "[32mPOST / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:15] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:15] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:15] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:15] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:15] "GET /socket.io/?EIO=4&transport=polling&t=Otj8Jw2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:15] "POST /socket.io/?EIO=4&transport=polling&t=Otj8Jw8&sid=Ps7y7sYsMQ7XyPMoAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:15] "GET /socket.io/?EIO=4&transport=polling&t=Otj8Jw9&sid=Ps7y7sYsMQ7XyPMoAAAA HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:35] "GET /socket.io/?EIO=4&transport=polling&t=Otj8OKy HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:35] "GET /socket.io/?EIO=4&transport=polling&t=Otj8On7&sid=vl2Nzpuso32TmyYjAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:35] "GET /socket.io/?EIO=4&transport=polling&t=Otj8OnB&sid=vl2Nzpuso32TmyYjAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:35] "POST /socket.io/?EIO=4&transport=polling&t=Otj8On6&sid=vl2Nzpuso32TmyYjAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:39] "GET /socket.io/?EIO=4&transport=websocket&sid=vl2Nzpuso32TmyYjAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:39] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:39] "GET /static/styles/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:39] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:39] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:39] "GET /socket.io/?EIO=4&transport=polling&t=Otj8Pu8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:39] "POST /socket.io/?EIO=4&transport=polling&t=Otj8PuC&sid=LHMAUTLf_-LSumTMAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:39] "GET /socket.io/?EIO=4&transport=polling&t=Otj8PuD&sid=LHMAUTLf_-LSumTMAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:33:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:34:35] "GET /socket.io/?EIO=4&transport=polling&t=Otj8cxW HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:34:35] "GET /socket.io/?EIO=4&transport=polling&t=Otj8dRT.0&sid=gybdKJYNHy1BbfwMAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:34:35] "GET /socket.io/?EIO=4&transport=polling&t=Otj8dRY&sid=gybdKJYNHy1BbfwMAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:34:35] "POST /socket.io/?EIO=4&transport=polling&t=Otj8dRT&sid=gybdKJYNHy1BbfwMAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:34:37] "GET /socket.io/?EIO=4&transport=websocket&sid=gybdKJYNHy1BbfwMAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:34:37] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:34:37] "GET /static/styles/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:34:37] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:34:37] "GET /static/styles/room.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:34:37] "GET /socket.io/?EIO=4&transport=polling&t=Otj8dzz HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:34:37] "POST /socket.io/?EIO=4&transport=polling&t=Otj8d-1&sid=drlFvZj07GMdvAB8AAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:34:37] "GET /socket.io/?EIO=4&transport=polling&t=Otj8d-1.0&sid=drlFvZj07GMdvAB8AAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:34:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:35:00] "GET /socket.io/?EIO=4&transport=websocket&sid=drlFvZj07GMdvAB8AAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:35:00] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:35:00] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:35:00] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:35:00] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:35:00] "GET /socket.io/?EIO=4&transport=polling&t=Otj8jY3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:35:00] "POST /socket.io/?EIO=4&transport=polling&t=Otj8jY7&sid=5G8p23exPYzKBiS0AAAE HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:35:00] "GET /socket.io/?EIO=4&transport=polling&t=Otj8jY7.0&sid=5G8p23exPYzKBiS0AAAE HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+ERROR:app:Exception on /room [GET]
+Traceback (most recent call last):
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\app\blueprints\main\routes.py", line 41, in room
+    print(f'thread is {thread}')
+                       ^^^^^^
+UnboundLocalError: cannot access local variable 'thread' where it is not associated with a value
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:36:29] "[35m[1mGET /room HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:37:21] "[32mPOST / HTTP/1.1[0m" 302 -
+ERROR:app:Exception on /room [GET]
+Traceback (most recent call last):
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\venv\Lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tomaster\Documents\coding_temple\capstone\textRPG\app\blueprints\main\routes.py", line 40, in room
+    print(f'thread is {thread}')
+                       ^^^^^^
+UnboundLocalError: cannot access local variable 'thread' where it is not associated with a value
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:37:21] "[35m[1mGET /room HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:45] "[32mPOST / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:45] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:45] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:45] "[36mGET /static/styles/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:45] "[36mGET /static/styles/room.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:45] "GET /socket.io/?EIO=4&transport=polling&t=OtjA1q2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:45] "POST /socket.io/?EIO=4&transport=polling&t=OtjA1q7&sid=9mea_Bs3D7A_sZ1WAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:45] "GET /socket.io/?EIO=4&transport=polling&t=OtjA1q7.0&sid=9mea_Bs3D7A_sZ1WAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:45] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:45] "GET /socket.io/?EIO=4&transport=polling&t=OtjA1qH&sid=9mea_Bs3D7A_sZ1WAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:56] "GET /room HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:56] "GET /static/styles/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:56] "[36mGET /static/js/room.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:56] "GET /static/styles/room.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:56] "GET /socket.io/?EIO=4&transport=polling&t=OtjA4ca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:57] "POST /socket.io/?EIO=4&transport=polling&t=OtjA4ch&sid=1tV5dTYQrWxdmozkAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:57] "GET /socket.io/?EIO=4&transport=polling&t=OtjA4ch.0&sid=1tV5dTYQrWxdmozkAAAC HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 19:40:57] "GET /socket.io/?EIO=4&transport=websocket&sid=9mea_Bs3D7A_sZ1WAAAA HTTP/1.1" 200 -
