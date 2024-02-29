@@ -2,7 +2,6 @@ from flask import session, request
 from flask_login import current_user
 from ... import socketio
 from flask_socketio import join_room, leave_room, emit
-
 from . import events
 
 #List of commands, needs to be revamped into class methods, with the socketio event calling a broad function depending on the information passed through from the client, and the function calling a class method. Unsure if i can cut out the middle man function
