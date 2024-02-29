@@ -1,6 +1,19 @@
 from ... import socketio
 from flask import request
 import app.blueprints.main.events as events
+import dill
+
+#World class that holds all entities
+class World():
+    def __init__(self) -> None:
+        rooms = []
+        dill_file = open('app/data/room_db.pkl', 'rb')
+        rooms = dill.load(dill_file)
+        self.rooms = rooms
+        print(f'World initialized with {self.rooms}')
+
+    def world_test(self):
+        print('world initalized')
 
 #Overall class for any interactable object in the world
 class Entity():

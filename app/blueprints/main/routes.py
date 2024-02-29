@@ -31,9 +31,6 @@ def world_timer():
             if events.client_list:
                 print('world timer')
                 socketio.emit('look', {'message': f'this is a global emitter on count {count}'})
-                for each in events.player_list:
-                     if randint(1,5) == 3:
-                        each.describe()
                 count += 1
                 socketio.sleep(10)
             else: break

@@ -1,4 +1,4 @@
-import shelve
+import dill
 #Overall class for any interactable object in the world
 class Entity():
     def __init__(self, id, name, description) -> None:
@@ -115,8 +115,12 @@ room_dict = {
     }
 }
 
-room_db = shelve.open('app/data/rooms')
-rooms = []
-for room in room_dict.values():
-    room_db[str(room['id'])] = Room(room['id'], room['name'], room['description'], room['position'], room['exits'], room['icon'])
-room_db.close()
+# rooms = []
+# for room in room_dict.values():
+#     rooms.append(Room(room['id'], room['name'], room['description'], room['position'], room['exits'], room['icon']))
+# dill_file = open('app/data/room_db.pkl', 'wb')
+# dill.dump(rooms, dill_file)
+
+dill_file = open('app/data/room_db.pkl', 'rb')
+rooms = dill.load(dill_file)
+print(rooms)

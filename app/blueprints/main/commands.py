@@ -2,7 +2,7 @@ from flask import session, request
 from flask_login import current_user
 from ... import socketio
 from flask_socketio import join_room, leave_room, emit
-from . import events
+import app.blueprints.main.events as events
 
 #List of commands, needs to be revamped into class methods, with the socketio event calling a broad function depending on the information passed through from the client, and the function calling a class method. Unsure if i can cut out the middle man function
 
@@ -22,16 +22,16 @@ def move(data):
     lon = int(location[location.index(',')+1:])
     print(f'lat is {lat}, lon is {lon}')
     if data['data'] == 'n' or data['data'] == 'north':
-        lat += 1
+        lon += 1
         emit('look', {'message': 'You move towards the north'}, room=sid)
     if data['data'] == 's' or data['data'] == 'south':
-        lat -= 1
+        lon -= 1
         emit('look', {'message': 'You move towards the south'}, room=sid)
     if data['data'] == 'e' or data['data'] == 'east':
-        lon += 1
+        lat += 1
         emit('look', {'message': 'You move towards the east'}, room=sid)
     if data['data'] == 'w' or data['data'] == 'west':
-        lon -= 1
+        lat -= 1
         emit('look', {'message': 'You move towards the west'}, room=sid)
     session['location'] = f'{lat},{lon}'
     print(f'new lat is {lat}, new lon is {lon}')
@@ -55,10 +55,8 @@ def look(data):
 def test(data):
     sid = request.sid
     print('this is a test confirming receipt')
-    session.get('player_list')[0].describe()
+    events.world.world_test()
 
 @socketio.event
 def attack(data):
     sid = request.sid
-    session.get('player_list')[0].damage()
-    emit('look', {'message': 'You hit the test for 10 damage'})
