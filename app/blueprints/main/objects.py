@@ -14,7 +14,7 @@ class World():
 
     def world_test(self):
         print('world initalized')
-        socketio.emit('look', {'message': self.rooms})
+        socketio.emit('look', {'message': self.rooms[0].description})
 
 #Overall class for any interactable object in the world
 class Entity():
