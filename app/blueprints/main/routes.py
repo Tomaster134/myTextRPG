@@ -29,7 +29,6 @@ def world_timer():
      count = 0
      while True:
             if events.client_list:
-                print('world timer')
                 socketio.emit('look', {'message': f'this is a global emitter on count {count}'})
                 count += 1
                 socketio.sleep(10)
@@ -43,7 +42,6 @@ def room():
         socketio.start_background_task(world_timer)
     if current_user.is_authenticated:
         location = session.get('location')
-        print(f'room route is {location}')
         return render_template('room.html')
     else:
         flash('Login in first, bubs', 'warning')

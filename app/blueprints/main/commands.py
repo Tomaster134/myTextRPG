@@ -10,17 +10,13 @@ import app.blueprints.main.events as events
 #This event should be moved to the Character class and using their move method
 @socketio.event
 def move(data):
-    print(f'session ID is {request.sid}')
-    print(f'leaving room {session["location"]}')
     location = session['location']
     username = session['username']
     sid = request.sid
-    print(username)
     leave_room(location)
     socketio.emit('status', {'username': username, 'message': 'walks out of the room'}, room=location)
     lat = int(location[:location.index(',')])
     lon = int(location[location.index(',')+1:])
-    print(f'lat is {lat}, lon is {lon}')
     if data['data'] == 'n' or data['data'] == 'north':
         lon += 1
         emit('look', {'message': 'You move towards the north'}, room=sid)
@@ -34,8 +30,6 @@ def move(data):
         lat -= 1
         emit('look', {'message': 'You move towards the west'}, room=sid)
     session['location'] = f'{lat},{lon}'
-    print(f'new lat is {lat}, new lon is {lon}')
-    print(f'current room is {session["location"]}')
     location = session['location']
     socketio.emit('status', {'username': username, 'message': 'walks into the room'}, room=location)
     join_room(session['location'])
@@ -54,9 +48,12 @@ def look(data):
 @socketio.event
 def test(data):
     sid = request.sid
-    print('this is a test confirming receipt')
     events.world.world_test()
 
 @socketio.event
 def attack(data):
     sid = request.sid
+
+@socketio.event
+def save(data):
+    events.world.save()

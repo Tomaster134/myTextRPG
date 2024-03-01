@@ -1,13 +1,14 @@
 
 Game Engine:
-    ->start objectifying basic commands - In Progress
-        --Rework socketio events to cut down on clutter - In Progress
-    ->make a 3x3 grid to "move" around in based on commands - In Progress
-    ->ensure that commands that aren't publicly visible only go to the person that issued the command (ie look, examine, gear, etc) -In Progress
-    ->Build classes for all entities
+    ->start objectifying basic commands -In Progress
+        --Rework socketio events to cut down on clutter -In Progress
+    ->make a 3x3 grid to "move" around in based on commands -In Progress
+    ->ensure that commands that aren't publicly visible only go to the person that issued the command (ie look, examine, gear, etc) -COMPLETED
+    ->Build classes for all entities -In Progress
         --Rooms
         --Players
         --NPCs
+    ->Methods for entities
     ->Tackle command parsing on the JavaScript end
         --Consider using an parser module
 
@@ -24,5 +25,6 @@ User Interface:
 
 Databases:
     ->SQL or NoSQL?
+        SIKE, pickle everything
     ->Figure out models for SQL regardless
 

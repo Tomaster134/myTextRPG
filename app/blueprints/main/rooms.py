@@ -1,23 +1,26 @@
 import dill
+import itertools
+
+
 #Overall class for any interactable object in the world
 class Entity():
-    def __init__(self, id, name, description) -> None:
-        self.id = id #Every entity needs a unique identifier
-        self.name = name #Shorthand name for each entity
+    def __init__(self, name, description) -> None:
+        self.name = name #Shorthand name for an entity
         self.description = description #Every entity needs to be able to be looked at
-
 
 #Class for rooms. Rooms should contain all other objects (NPCs, Items, Players, anything else that gets added)
 class Room(Entity):
-    def __init__(self, id, name, description, position, exits, icon, contents={'NPCs': [], 'Players': [], 'Items': []}) -> None:
-        super().__init__(id, name, description)
+    id = itertools.count()
+    def __init__(self, name, description, position, exits, icon, contents={'NPCs': [], 'Players': [], 'Items': []}) -> None:
+        super().__init__(name, description)
+        self.id = next(Room.id)
         self.position = position #Coordinates in the grid system for a room, will be used when a character moves rooms
         self.exits = exits #List of rooms that are connected to this room. Should be N,S,E,W but may expand so a player can "move/go shop or someting along those lines"
         self.icon = icon #Icon for the world map, should consist of two ASCII characters (ie: "/\" for a mountain)
         self.contents = contents #Dictionary containing all NPCs, Players, and Items currently in the room. Values will be modified depending on character movement, NPC generation, and item movement
+
 room_dict = {
     (0,0): {
-        'id': 1,
         'name': 'Town Square',
         'description': 'This is the center of town! More to come.',
         'position': '(0,0)',
@@ -30,7 +33,6 @@ room_dict = {
         'icon': '()'
     },
     (0,1): {
-        'id': 2,
         'name': 'Pavilion',
         'description': 'There is a pavilion here with two buildings to the east and west.',
         'position': '(0,1)',
@@ -42,7 +44,6 @@ room_dict = {
         'icon': '/\\'
     },
     (0,-1): {
-        'id': 3,
         'name': 'Gravel Path',
         'description': 'There is a gravel path here, leading to a forest to the east and a lake to the west.',
         'position': '(0,-1)',
@@ -54,7 +55,6 @@ room_dict = {
         'icon': '||'
     },
     (1,0): {
-        'id': 4,
         'name': 'Neighborhood',
         'description': 'There are many houses here. All appear locked.',
         'position': '(1,0)',
@@ -64,7 +64,6 @@ room_dict = {
         'icon': '_^'
     },
     (-1,0): {
-        'id': 5,
         'name': 'Barracks',
         'description': 'You are in the entrance to the baracks.',
         'position': '(-1,0)',
@@ -74,7 +73,6 @@ room_dict = {
         'icon': '()'
     },
     (-1,1): {
-        'id': 6,
         'name': 'Mayor\'s House',
         'description': 'You stand before the mayor\'s house. It is opulent and makes you want to rage against the ruling class.',
         'position': '(-1,1)',
@@ -84,7 +82,6 @@ room_dict = {
         'icon': '^^'
     },
     (1,1): {
-        'id': 7,
         'name': 'General Store',
         'description': 'A small shop that sells various essential goods.',
         'position': '(1,1)',
@@ -94,7 +91,6 @@ room_dict = {
         'icon': 'oo'
     },
     (1,-1): {
-        'id': 8,
         'name': 'Forest',
         'description': 'A foreboding forest. You feel the trees pressing down above you, and every noise makes you twitch in fear.',
         'position': '(1,-1)',
@@ -104,7 +100,6 @@ room_dict = {
         'icon': 'Tt'
     },
     (-1,-1): {
-        'id': 9,
         'name': 'Lake',
         'description': 'A placid lake. You feel at peace here.',
         'position': '(-1,-1)',
@@ -115,12 +110,14 @@ room_dict = {
     }
 }
 
-# rooms = []
+# rooms = {}
 # for room in room_dict.values():
-#     rooms.append(Room(room['id'], room['name'], room['description'], room['position'], room['exits'], room['icon']))
+#     new_room = Room(room['name'], room['description'], room['position'], room['exits'], room['icon'])
+#     rooms.update({new_room.id: new_room})
 # dill_file = open('app/data/room_db.pkl', 'wb')
 # dill.dump(rooms, dill_file)
 
 dill_file = open('app/data/room_db.pkl', 'rb')
 rooms = dill.load(dill_file)
 print(rooms)
+print(rooms[0].id, rooms[0].name, rooms[0].description, rooms[0].position, rooms[0].exits, rooms[0].icon)
