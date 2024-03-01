@@ -61,7 +61,7 @@ socketio.on("status", (data) => {
   createStatus(data.username, data.message);
 });
 
-socketio.on("look", (data) => {
+socketio.on("event", (data) => {
   createLook(data.message);
 });
 
@@ -79,7 +79,7 @@ form.addEventListener("submit", (event) => {
     payload.data = "";
   }
   console.log(payload);
-  socketio.emit(payload.command, payload);
+  socketio.emit('client', payload);
   message.value = "";
   messages.scrollTop = messages.scrollHeight
 })

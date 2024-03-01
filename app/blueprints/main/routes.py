@@ -29,7 +29,7 @@ def world_timer():
      count = 0
      while True:
             if events.client_list:
-                socketio.emit('look', {'message': f'this is a global emitter on count {count}'})
+                socketio.emit('event', {'message': f'this is a global emitter on count {count}'})
                 count += 1
                 socketio.sleep(10)
             else: break

@@ -23,88 +23,88 @@ room_dict = {
     (0,0): {
         'name': 'Town Square',
         'description': 'This is the center of town! More to come.',
-        'position': '(0,0)',
+        'position': '0,0',
         'exits': {
-            'north': '(0,1)',
-            'south': '(0,-1)',
-            'east': '(1, 0)',
-            'west': '(-1, 0)'
+            'north': '0,1',
+            'south': '0,-1',
+            'east': '1,0',
+            'west': '-1,0'
         },
         'icon': '()'
     },
     (0,1): {
         'name': 'Pavilion',
         'description': 'There is a pavilion here with two buildings to the east and west.',
-        'position': '(0,1)',
+        'position': '0,1',
         'exits': {
-            'south': '(0,0)',
-            'east': '(1, 1)',
-            'west': '(-1, 1)'
+            'south': '0,0',
+            'east': '1,1',
+            'west': '-1,1'
         },
         'icon': '/\\'
     },
     (0,-1): {
         'name': 'Gravel Path',
         'description': 'There is a gravel path here, leading to a forest to the east and a lake to the west.',
-        'position': '(0,-1)',
+        'position': '0,-1',
         'exits': {
-            'north': '(0,0)',
-            'east': '(1, -1)',
-            'west': '(-1, 1)'
+            'north': '0,0',
+            'east': '1,-1',
+            'west': '-1,1'
         },
         'icon': '||'
     },
     (1,0): {
         'name': 'Neighborhood',
         'description': 'There are many houses here. All appear locked.',
-        'position': '(1,0)',
+        'position': '1,0',
         'exits': {
-            'west': '(0, 0)'
+            'west': '0,0'
         },
         'icon': '_^'
     },
     (-1,0): {
         'name': 'Barracks',
         'description': 'You are in the entrance to the baracks.',
-        'position': '(-1,0)',
+        'position': '-1,0',
         'exits': {
-            'east': '(0, 0)'
+            'east': '0,0'
         },
         'icon': '()'
     },
     (-1,1): {
         'name': 'Mayor\'s House',
         'description': 'You stand before the mayor\'s house. It is opulent and makes you want to rage against the ruling class.',
-        'position': '(-1,1)',
+        'position': '-1,1',
         'exits': {
-            'east': '(0,1)',
+            'east': '0,1',
         },
         'icon': '^^'
     },
     (1,1): {
         'name': 'General Store',
         'description': 'A small shop that sells various essential goods.',
-        'position': '(1,1)',
+        'position': '1,1',
         'exits': {
-            'west': '(0,1)'
+            'west': '0,1'
         },
         'icon': 'oo'
     },
     (1,-1): {
         'name': 'Forest',
         'description': 'A foreboding forest. You feel the trees pressing down above you, and every noise makes you twitch in fear.',
-        'position': '(1,-1)',
+        'position': '1,-1',
         'exits': {
-            'west': '(0,-1)'
+            'west': '0,-1'
         },
         'icon': 'Tt'
     },
     (-1,-1): {
         'name': 'Lake',
         'description': 'A placid lake. You feel at peace here.',
-        'position': '(-1,-1)',
+        'position': '-1,-1',
         'exits': {
-            'east': '(0,-1)',
+            'east': '0,-1',
         },
         'icon': '~~'
     }
@@ -113,11 +113,11 @@ room_dict = {
 # rooms = {}
 # for room in room_dict.values():
 #     new_room = Room(room['name'], room['description'], room['position'], room['exits'], room['icon'])
-#     rooms.update({new_room.id: new_room})
+#     rooms.update({new_room.position: new_room})
 # dill_file = open('app/data/room_db.pkl', 'wb')
 # dill.dump(rooms, dill_file)
 
 dill_file = open('app/data/room_db.pkl', 'rb')
 rooms = dill.load(dill_file)
 print(rooms)
-print(rooms[0].id, rooms[0].name, rooms[0].description, rooms[0].position, rooms[0].exits, rooms[0].icon)
+print(rooms['0,0'].id, rooms['0,0'].name, rooms['0,0'].description, rooms['0,0'].position, rooms['0,0'].exits, rooms['0,0'].icon)

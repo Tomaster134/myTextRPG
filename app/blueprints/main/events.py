@@ -13,7 +13,6 @@ client_list = [] #List of clients currently connected
 #Instatiating world class to hold all rooms, players, and characters
 
 world = objects.World()
-rooms = world.rooms
 #This is an event that occurs whenever a new connection is detected by the socketio server. Connection needs to properly connect the user with their Player object, update the Player object's session_id so private server emits can be transmitted to that player only
 @socketio.on('connect')
 def connect():
@@ -51,14 +50,3 @@ def disconnect():
 
 
 #This needs to revamped to essentially handle input and properly reroute input to the proper functions and methods
-@socketio.on('say')
-def say(data):
-    room = session.get('location')
-    content = {
-        'username': session.get('username'),
-        'message': data['data'],
-        'type': 'message'
-    }
-
-    if data['command'] == 'say':
-        emit('message', {'username': content['username'], 'message': content['message']}, room=room)

@@ -10,7 +10,6 @@ class World():
         dill_file = open('app/data/room_db.pkl', 'rb')
         rooms = dill.load(dill_file)
         self.rooms = rooms
-        print(f'World initialized with {self.rooms}')
 
     def world_test(self):
         print(f'World initialized with {self.rooms}')
