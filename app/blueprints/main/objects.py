@@ -7,14 +7,13 @@ import itertools
 #World class that holds all entities
 class World():
     def __init__(self) -> None:
-        rooms = []
         dill_file = open('app/data/room_db.pkl', 'rb')
         rooms = dill.load(dill_file)
         self.rooms = rooms
         print(f'World initialized with {self.rooms}')
 
     def world_test(self):
-        print('world initalized')
+        print(f'World initialized with {self.rooms}')
         socketio.emit('look', {'message': self.rooms[0].description})
 
     #Might not use this, and instead use individual pickles for each entity type for modularization

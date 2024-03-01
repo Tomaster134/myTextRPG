@@ -16,6 +16,8 @@ const createMessage = (username, msg) => {
     </div>
     `;
   messages.innerHTML += content;
+  if(messages.scrollHeight - messages.clientHeight - messages.scrollTop <= 30) {
+  messages.scrollTop = messages.scrollHeight};
 };
 
 const createStatus = (username, msg) => {
@@ -30,6 +32,8 @@ const createStatus = (username, msg) => {
     </div>
     `;
   messages.innerHTML += content;
+  if(messages.scrollHeight - messages.clientHeight - messages.scrollTop <= 30) {
+  messages.scrollTop = messages.scrollHeight};
 };
 
 const createLook = (msg) => {
@@ -44,6 +48,8 @@ const createLook = (msg) => {
     </div>
     `;
   messages.innerHTML += content;
+  if(messages.scrollHeight - messages.clientHeight - messages.scrollTop <= 30) {
+  messages.scrollTop = messages.scrollHeight};
 };
 
 //Needs to be revamped to have one, maybe two ways of outputting server emits
@@ -75,4 +81,5 @@ form.addEventListener("submit", (event) => {
   console.log(payload);
   socketio.emit(payload.command, payload);
   message.value = "";
+  messages.scrollTop = messages.scrollHeight
 })

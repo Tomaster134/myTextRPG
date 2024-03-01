@@ -12,8 +12,8 @@ client_list = [] #List of clients currently connected
 
 #Instatiating world class to hold all rooms, players, and characters
 
-world = dill.load(open('app/data/world_db.pkl', 'rb'))
-
+world = objects.World()
+rooms = world.rooms
 #This is an event that occurs whenever a new connection is detected by the socketio server. Connection needs to properly connect the user with their Player object, update the Player object's session_id so private server emits can be transmitted to that player only
 @socketio.on('connect')
 def connect():
