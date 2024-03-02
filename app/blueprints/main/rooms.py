@@ -114,10 +114,10 @@ room_dict = {
 # for room in room_dict.values():
 #     new_room = Room(room['name'], room['description'], room['position'], room['exits'], room['icon'])
 #     rooms.update({new_room.position: new_room})
-# dill_file = open('app/data/room_db.pkl', 'wb')
-# dill.dump(rooms, dill_file)
+# with open('app/data/room_db.pkl', 'wb') as dill_file:
+#    dill.dump(rooms, dill_file)
 
-dill_file = open('app/data/room_db.pkl', 'rb')
-rooms = dill.load(dill_file)
+with open('app/data/room_db.pkl', 'rb') as dill_file:
+    rooms = dill.load(dill_file)
 print(rooms)
 print(rooms['0,0'].id, rooms['0,0'].name, rooms['0,0'].description, rooms['0,0'].position, rooms['0,0'].exits, rooms['0,0'].icon)

@@ -32,8 +32,14 @@ def client(data):
             content['data'] = 'west'
         move(content['player'], content['sid'], content['location'], content['data'])
 
-    if data['command'] == 'look' or data['command'] == 'l':
+    if content['command'] == 'look' or content['command'] == 'l':
         look(content['player'], content['sid'], content['location'], content['data'])
+
+    if content['command'] == 'test':
+        test(content['player'], content['sid'], content['location'], content['data'])
+
+    if content['command'] == 'save':
+        save(content['player'], content['sid'], content['location'], content['data'])
 
 
 
@@ -82,15 +88,9 @@ def look(player, sid, location, data=''):
         emit('event', {'message': 'this will eventually be a call to a class\'s .description to return a look statement.'}, to=sid)
 
 #These are primarily test functions to make sure the world timer is functional
-@socketio.event
-def test(data):
-    sid = request.sid
+def test(player, sid, location, data):
     events.world.world_test()
 
-@socketio.event
-def attack(data):
-    sid = request.sid
-
-@socketio.event
-def save(data):
-    events.world.save()
+def save(player, sid, location, data):
+    events.world.world_save()
+    events.world.room_save()

@@ -7,19 +7,25 @@ import itertools
 #World class that holds all entities
 class World():
     def __init__(self) -> None:
-        dill_file = open('app/data/room_db.pkl', 'rb')
-        rooms = dill.load(dill_file)
-        self.rooms = rooms
+        with open('app/data/room_db.pkl', 'rb') as dill_file:
+            rooms = dill.load(dill_file)
+            self.rooms = rooms
 
     def world_test(self):
         print(f'World initialized with {self.rooms}')
-        socketio.emit('look', {'message': self.rooms[0].description})
+        socketio.emit('event', {'message': self.rooms['0,0'].description})
 
     #Might not use this, and instead use individual pickles for each entity type for modularization
-    def save(self):
-        dill_file = open('app/data/world_db.pkl', 'wb')
-        dill.dump(self, dill_file)
-        socketio.emit('look', {'message': 'world saved'})
+    def world_save(self):
+        with open('app/data/world_db.pkl', 'wb') as dill_file:
+            dill.dump(self, dill_file)
+        socketio.emit('event', {'message': 'world saved'})
+
+    def room_save(self):
+        with open('app/data/room_db.pkl', 'wb') as dill_file:
+            dill.dump(self.rooms, dill_file)
+        socketio.emit('event', {'message': 'rooms saved'})
+
 
 #Overall class for any interactable object in the world
 class Entity():
