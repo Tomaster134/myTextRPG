@@ -11,6 +11,7 @@ class World():
         with open('app/data/room_db.pkl', 'rb') as dill_file:
             rooms = dill.load(dill_file)
             self.rooms = rooms
+            self.players = {}
 
     def world_test(self):
         print(f'World initialized with {self.rooms}')
@@ -50,8 +51,16 @@ class Room(Entity):
         self.contents = contents #Dictionary containing all NPCs, Players, and Items currently in the room. Values will be modified depending on character movement, NPC generation, and item movement
 
 #Broad class for any entity capable of independent and autonomous action that affects the world in some way
+default_stats = {
+'strength': 10,
+'endurance': 10,
+'intelligence': 10,
+'wisdom': 10,
+'charisma': 10,
+'agility': 10
+}
 class Character(Entity):
-    def __init__(self, name, description, health, level, location, stats, deceased=False, inventory = []) -> None:
+    def __init__(self, name, description, health=100, level=1, location='0,0', stats=default_stats, deceased=False, inventory = []) -> None:
         super().__init__(name, description)
         self.health = health #All characters should have a health value
         self.level = level #All characters should have a level value
@@ -62,8 +71,8 @@ class Character(Entity):
 
 #Class that users control to interact with the world. Unsure if I need to have this mixed in with the models side or if it would be easier to pickle the entire class and pass that to the database?
 class Player(Character):
-    def __init__(self, id, name, description, health, level, location, stats, account, inventory=[]) -> None:
-        super().__init__(name, description, health, level, location, stats, inventory)
+    def __init__(self, id, account, name, description, health=100, level=1, location='0,0', stats=default_stats, deceased=False, inventory=[]) -> None:
+        super().__init__(name, description, health, level, location, stats, deceased, inventory)
         self.id = id
         self.account = account #User account associated with the player character
         self.session_id = '' #Session ID so messages can be broadcast to players without other members of a room or server seeing the message. Session ID is unique to every connection, so part of the connection process must be to assign the new value to the player's session_id
@@ -71,8 +80,8 @@ class Player(Character):
 #Class that is controlled by the server. Capable of being interacted with.
 class NPC(Character):
     id = itertools.count()
-    def __init__(self, name, description, health, level, location, home, stats, inventory=[]) -> None:
-        super().__init__(name, description, health, level, location, stats, inventory)
+    def __init__(self, name, description, deceased, health, level, location, home, stats, inventory=[]) -> None:
+        super().__init__(name, description, deceased, health, level, location, stats, inventory)
         self.id = next(NPC.id)
         self.home = home #Spawn location if NPC is killed. Can also double as a bound to prevent NPC from wandering too far from home during world timer movement
 

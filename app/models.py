@@ -29,10 +29,10 @@ class PlayerAccount(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     player_name = db.Column(db.String, unique=True)
-    player_info = db.Column(db.String)
+    player_info = db.Column(db.LargeBinary)
     is_active = db.Column(db.Boolean)
 
-    def __init__(self, user_id, player_name, player_info='', is_active=False):
+    def __init__(self, user_id, player_name, player_info=None, is_active=False):
         self.user_id = user_id
         self.player_name = player_name
         self.player_info = player_info
