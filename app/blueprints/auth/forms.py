@@ -14,3 +14,7 @@ class SignUpForm(FlaskForm):
     email = EmailField('Email: ', validators=[DataRequired()])
     password = PasswordField('Password: ', validators=[DataRequired()])
     signup_btn = SubmitField('Sign Up!')
+
+class AccountForm(FlaskForm):
+    player = StringField('Player Name:', validators=[DataRequired()])
+    create_btn = SubmitField('Create a player!')

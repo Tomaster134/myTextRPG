@@ -1,0 +1,13 @@
+{%extends 'base.html'%} {%block title%} Create New Player {%endblock%} {%block styles%}
+{%endblock%} {%block content%}
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+      <label for="player" class="form-label">New Player Name</label>
+      {{ form.player(class="form-control", id="player", placeholder="Player Name") }}
+    </div>
+    {{ form.create_btn(class="btn btn-primary")}}
+</form>
+{%include './includes/flash.html'%}
+
+{%endblock%}

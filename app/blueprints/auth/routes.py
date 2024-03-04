@@ -1,8 +1,8 @@
 from flask import request, render_template, redirect, url_for, flash
 from . import auth
-from .forms import LoginForm, SignUpForm
-from flask_login import login_user, logout_user, login_required
-from app.models import User
+from .forms import LoginForm, SignUpForm, AccountForm
+from flask_login import login_user, logout_user, login_required, current_user
+from app.models import User, PlayerAccount
 from werkzeug.security import check_password_hash
 from sqlalchemy import exc
 
@@ -42,6 +42,33 @@ def signup():
             return render_template('signup.html', form=form)
     else:
         return render_template('signup.html', form=form)
+
+#Page to create an active account. Checks to see if this is the first player created, if not, sets all other players under that account to inactive and makes the newly created account active.
+@auth.route('/create', methods=['GET', 'POST'])
+@login_required
+def create():
+    form = AccountForm()
+    first_account = False
+    if current_user.accounts.all() == []:
+        first_account = True
+    if request.method == 'POST' and form.validate_on_submit:
+        player = form.player.data
+        if not first_account:
+            for account in current_user.accounts.all():
+                account.is_active = False
+                account.save()
+        try:
+            new_player = PlayerAccount(user_id=current_user.id, player_name=player, is_active=True)
+            new_player.save()
+            current_user.active_account = new_player.id
+            current_user.save()
+            flash(f'Player {player} has been created and set as active account!', 'success')
+            return redirect(url_for('main.index'))
+        except exc.IntegrityError:
+            flash(f'Player name {player} already taken', 'warning')
+            return render_template('create.html', form=form)
+    else:
+        return render_template('create.html', form=form)
 
 #Logout route. Pretty straightforward.
 @auth.route('/logout')

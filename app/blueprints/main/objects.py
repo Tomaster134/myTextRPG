@@ -3,6 +3,7 @@ from flask import request
 import app.blueprints.main.events as events
 import dill
 import itertools
+from ...models import PlayerAccount
 
 #World class that holds all entities
 class World():
@@ -61,12 +62,11 @@ class Character(Entity):
 
 #Class that users control to interact with the world. Unsure if I need to have this mixed in with the models side or if it would be easier to pickle the entire class and pass that to the database?
 class Player(Character):
-    id = itertools.count()
-    def __init__(self, name, description, health, level, location, stats, account, session_id, inventory=[]) -> None:
+    def __init__(self, id, name, description, health, level, location, stats, account, inventory=[]) -> None:
         super().__init__(name, description, health, level, location, stats, inventory)
-        self.id = next(Player.id)
+        self.id = id
         self.account = account #User account associated with the player character
-        self.session_id = session_id #Session ID so messages can be broadcast to players without other members of a room or server seeing the message. Session ID is unique to every connection, so part of the connection process must be to assign the new value to the player's session_id
+        self.session_id = '' #Session ID so messages can be broadcast to players without other members of a room or server seeing the message. Session ID is unique to every connection, so part of the connection process must be to assign the new value to the player's session_id
 
 #Class that is controlled by the server. Capable of being interacted with.
 class NPC(Character):

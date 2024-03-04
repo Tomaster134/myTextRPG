@@ -10,7 +10,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String, unique=True, nullable=False)
     password = db.Column(db.String, unique=True)
     location = db.Column(db.String)
-    accounts = db.relationship('Player',
+    active_account = db.Column(db.Integer)
+    accounts = db.relationship('PlayerAccount',
                              backref = 'played_by',
                              lazy = 'dynamic')
 
@@ -24,33 +25,18 @@ class User(db.Model, UserMixin):
         db.session.add(self)
         db.session.commit()
 
-class Player (db.Model):
+class PlayerAccount(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    username = db.Column(db.String)
-    level = db.Column(db.Integer)
-    health = db.Column(db.Integer)
-    strength = db.Column(db.Integer)
-    endurance = db.Column(db.Integer)
-    intelligence = db.Column(db.Integer)
-    agility = db.Column(db.Integer)
-    perception = db.Column(db.Integer)
-    charisma = db.Column(db.Integer)
-    location = db.Column(db.String)
+    player_name = db.Column(db.String, unique=True)
+    player_info = db.Column(db.String)
+    is_active = db.Column(db.Boolean)
 
-    def __init__(self, username, user_id, location='0,0'):
-        self.username = username
+    def __init__(self, user_id, player_name, player_info='', is_active=False):
         self.user_id = user_id
-        self.level = 1
-        self.health = 100
-        self.strength = 10
-        self.endurance = 10
-        self.intelligence = 10
-        self.agility = 10
-        self.perception = 10
-        self.charisma = 10
-        self.location = location
-        self.alive = True
+        self.player_name = player_name
+        self.player_info = player_info
+        self.is_active = is_active
 
     def save(self):
         db.session.add(self)
