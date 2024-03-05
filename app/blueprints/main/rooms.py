@@ -8,10 +8,14 @@ class Entity():
         self.name = name #Shorthand name for an entity
         self.description = description #Every entity needs to be able to be looked at
 
+    #Test function currently, but every entity needs to be able to describe itself when looked at
+    def describe(self):
+        pass
+
 #Class for rooms. Rooms should contain all other objects (NPCs, Items, Players, anything else that gets added)
 class Room(Entity):
     id = itertools.count()
-    def __init__(self, name, description, position, exits, icon, contents={'NPCs': [], 'Players': [], 'Items': []}) -> None:
+    def __init__(self, name, description, position, exits, icon, contents={'NPCs': {}, 'Players': {}, 'Items': {}}) -> None:
         super().__init__(name, description)
         self.id = next(Room.id)
         self.position = position #Coordinates in the grid system for a room, will be used when a character moves rooms
@@ -120,4 +124,4 @@ room_dict = {
 with open('app/data/room_db.pkl', 'rb') as dill_file:
     rooms = dill.load(dill_file)
 print(rooms)
-print(rooms['0,0'].id, rooms['0,0'].name, rooms['0,0'].description, rooms['0,0'].position, rooms['0,0'].exits, rooms['0,0'].icon)
+print(rooms['0,0'].id, rooms['0,0'].name, rooms['0,0'].description, rooms['0,0'].position, rooms['0,0'].exits, rooms['0,0'].icon, rooms['0,0'].contents)

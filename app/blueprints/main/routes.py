@@ -41,8 +41,11 @@ def room():
     if not events.client_list:
         socketio.start_background_task(world_timer)
     if current_user.is_authenticated:
-        location = session.get('location')
-        return render_template('room.html')
+        if current_user.active_account:
+            return render_template('room.html')
+        else:
+             flash('Please create a player before joining the world.', 'warning')
+             return redirect(url_for('auth.create'))
     else:
         flash('Login in first, bubs', 'warning')
         return redirect(url_for('auth.login'))

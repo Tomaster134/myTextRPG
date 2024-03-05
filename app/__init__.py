@@ -31,7 +31,7 @@ def create_app():
     login_manager.login_message_category = 'warning'
 
     #Importing blueprints
-    from app.blueprints.main import main, events, commands, player
+    from app.blueprints.main import main, events, commands, objects
     from app.blueprints.auth import auth
 
     app.register_blueprint(main)

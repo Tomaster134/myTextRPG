@@ -3,7 +3,6 @@ from flask import request
 import app.blueprints.main.events as events
 import dill
 import itertools
-from ...models import PlayerAccount
 
 #World class that holds all entities
 class World():
@@ -42,7 +41,7 @@ class Entity():
 #Class for rooms. Rooms should contain all other objects (NPCs, Items, Players, anything else that gets added)
 class Room(Entity):
     id = itertools.count()
-    def __init__(self, name, description, position, exits, icon, contents={'NPCs': [], 'Players': [], 'Items': []}) -> None:
+    def __init__(self, name, description, position, exits, icon, contents={'NPCs': {}, 'Players': {}, 'Items': {}}) -> None:
         super().__init__(name, description)
         self.id = next(Room.id)
         self.position = position #Coordinates in the grid system for a room, will be used when a character moves rooms
