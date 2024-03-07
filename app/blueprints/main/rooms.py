@@ -23,6 +23,14 @@ class Room(Entity):
         self.icon = icon #Icon for the world map, should consist of two ASCII characters (ie: "/\" for a mountain)
         self.contents = contents #Dictionary containing all NPCs, Players, and Items currently in the room. Values will be modified depending on character movement, NPC generation, and item movement
 
+    def describe_contents(self, caller):
+        output = ''
+        print(f'Room Object: {id(self)}')
+        print(f'Room Name: {self.name}')
+        print(f'Room Position: {self.position}')
+        print(f'Room Contents: {self.contents}')
+        return output
+
 room_dict = {
     (0,0): {
         'name': 'Town Square',
@@ -54,7 +62,7 @@ room_dict = {
         'exits': {
             'north': '0,0',
             'east': '1,-1',
-            'west': '-1,1'
+            'west': '-1,-1'
         },
         'icon': '||'
     },
@@ -114,14 +122,14 @@ room_dict = {
     }
 }
 
-# rooms = {}
-# for room in room_dict.values():
-#     new_room = Room(room['name'], room['description'], room['position'], room['exits'], room['icon'])
-#     rooms.update({new_room.position: new_room})
-# with open('app/data/room_db.pkl', 'wb') as dill_file:
-#    dill.dump(rooms, dill_file)
+rooms = {}
+for room in room_dict.values():
+    new_room = Room(room['name'], room['description'], room['position'], room['exits'], room['icon'])
+    rooms.update({new_room.position: new_room})
+with open('app/data/room_db.pkl', 'wb') as dill_file:
+   dill.dump(rooms, dill_file)
 
-with open('app/data/room_db.pkl', 'rb') as dill_file:
-    rooms = dill.load(dill_file)
-print(rooms)
-print(rooms['0,0'].id, rooms['0,0'].name, rooms['0,0'].description, rooms['0,0'].position, rooms['0,0'].exits, rooms['0,0'].icon, rooms['0,0'].contents)
+# with open('app/data/room_db.pkl', 'rb') as dill_file:
+#     rooms = dill.load(dill_file)
+# print(rooms)
+# print(rooms['0,0'].id, rooms['0,0'].name, rooms['0,0'].description, rooms['0,0'].position, rooms['0,0'].exits, rooms['0,0'].icon, rooms['0,0'].contents)

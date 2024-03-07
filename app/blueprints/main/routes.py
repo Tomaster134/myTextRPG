@@ -11,11 +11,6 @@ from random import randint
 def index():
         if request.method == 'POST':
             if current_user.is_authenticated:
-                location = current_user.location
-                username = current_user.username
-                
-                session['location'] = location
-                session["username"] = username
                 return redirect(url_for('main.room'))
             else: 
                 flash('Login in first, bubs', 'warning')

@@ -11,7 +11,7 @@ from flask_migrate import Migrate
 import logging
 
 #Creates a server object that is used to wrap the app for websocket functionality
-socketio = SocketIO(async_mode='gevent')
+socketio = SocketIO(logger=True)
 
 #function that gets called when flask app is built
 def create_app():

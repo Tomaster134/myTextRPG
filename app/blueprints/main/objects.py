@@ -3,6 +3,7 @@ from flask import request
 import app.blueprints.main.events as events
 import dill
 import itertools
+from flask_socketio import join_room, leave_room
 
 #World class that holds all entities
 class World():
@@ -49,6 +50,13 @@ class Room(Entity):
         self.icon = icon #Icon for the world map, should consist of two ASCII characters (ie: "/\" for a mountain)
         self.contents = contents #Dictionary containing all NPCs, Players, and Items currently in the room. Values will be modified depending on character movement, NPC generation, and item movement
 
+    def describe_contents(self, caller):
+        output = ''
+        print('test')
+        print(f'room contents is {self.contents["Players"]}')
+        return output
+
+
 #Broad class for any entity capable of independent and autonomous action that affects the world in some way
 default_stats = {
 'strength': 10,
@@ -68,6 +76,7 @@ class Character(Entity):
         self.deceased = deceased #Indicator of if a character is alive or not. If True, inventory can be looted
         self.inventory = inventory #List of items in character's inventory. May swap to a dictionary of lists so items can be placed in categories
 
+
 #Class that users control to interact with the world. Unsure if I need to have this mixed in with the models side or if it would be easier to pickle the entire class and pass that to the database?
 class Player(Character):
     def __init__(self, id, account, name, description, health=100, level=1, location='0,0', stats=default_stats, deceased=False, inventory=[]) -> None:
@@ -75,6 +84,61 @@ class Player(Character):
         self.id = id
         self.account = account #User account associated with the player character
         self.session_id = '' #Session ID so messages can be broadcast to players without other members of a room or server seeing the message. Session ID is unique to every connection, so part of the connection process must be to assign the new value to the player's session_id
+
+    def connection(self):
+        events.world.rooms[self.location].contents['Players'].update({self.id: self})
+
+    def disconnection(self):
+        pass
+
+    def look(self, data, room):
+        if data == '':
+            socketio.emit('event', {'message': self.location}, to=self.session_id)
+            socketio.emit('event', {'message': room.description}, to=self.session_id)
+            socketio.emit('event', {'message': room.describe_contents(self)}, to=self.session_id)
+        else:
+            socketio.emit('event', {'message': 'this will eventually be a call to a class\'s .description to return a look statement.'}, to=self.session_id)
+    
+    def speak(self, data):
+        socketio.emit('event', {'message': f'{self.name} says "{data}"'}, room=self.location, include_self=False)
+        socketio.emit('event', {'message': f'You say "{data}"'}, to=self.session_id)
+
+    def move(self, direction, room):
+        if direction not in room.exits:
+            socketio.emit('event', {'message': 'You can\'t go that way.'}, to=self.session_id)
+            return
+        leave_room(self.location)
+        socketio.emit('event', {'message': f'{self.name} moves towards the {direction}'}, room=self.location)
+        if self.id in room.contents['Players']:
+            print(f"{room.contents['Players'][self.id].name} removed from {room.name}, object: {id(room)}")
+            print(events.world)
+            del room.contents['Players'][self.id]
+            print(room.contents)
+
+
+        lat = int(self.location[:self.location.index(',')])
+        lon = int(self.location[self.location.index(',')+1:])
+        if direction == 'n' or direction == 'north':
+            lon += 1
+            socketio.emit('event', {'message': 'You move towards the north'}, to=self.session_id)
+        if direction == 's' or direction == 'south':
+            lon -= 1
+            socketio.emit('event', {'message': 'You move towards the south'}, to=self.session_id)
+        if direction == 'e' or direction == 'east':
+            lat += 1
+            socketio.emit('event', {'message': 'You move towards the east'}, to=self.session_id)
+        if direction == 'w' or direction == 'west':
+            lat -= 1
+            socketio.emit('event', {'message': 'You move towards the west'}, to=self.session_id)
+
+        new_location = f'{lat},{lon}'
+        came_from = [i for i in events.world.rooms[new_location].exits if events.world.rooms[new_location].exits[i]==self.location]
+        socketio.emit('event', {'message': f'{self.name} arrives from the {came_from[0]}'}, room=new_location)
+        socketio.sleep(.5)
+        self.location = new_location
+        join_room(self.location)
+        events.world.rooms[self.location].contents['Players'][self.id] = self
+        socketio.emit('event', {'message': events.world.rooms[self.location].description}, to=self.session_id)
 
 #Class that is controlled by the server. Capable of being interacted with.
 class NPC(Character):

@@ -16,8 +16,8 @@ const createMessage = (username, msg) => {
     </div>
     `;
   messages.innerHTML += content;
-  if(messages.scrollHeight - messages.clientHeight - messages.scrollTop <= 30) {
-  messages.scrollTop = messages.scrollHeight};
+  if(messages.scrollHeight - messages.clientHeight - messages.scrollTop <= 60) {
+  messages.scrollTop = messages.scrollHeight + 10000};
 };
 
 const createStatus = (username, msg) => {
@@ -32,8 +32,8 @@ const createStatus = (username, msg) => {
     </div>
     `;
   messages.innerHTML += content;
-  if(messages.scrollHeight - messages.clientHeight - messages.scrollTop <= 30) {
-  messages.scrollTop = messages.scrollHeight};
+  if(messages.scrollHeight - messages.clientHeight - messages.scrollTop <= 60) {
+    messages.scrollTop = messages.scrollHeight + 10000};
 };
 
 const createLook = (msg) => {
@@ -48,8 +48,9 @@ const createLook = (msg) => {
     </div>
     `;
   messages.innerHTML += content;
-  if(messages.scrollHeight - messages.clientHeight - messages.scrollTop <= 30) {
-  messages.scrollTop = messages.scrollHeight};
+  if(messages.scrollHeight - messages.clientHeight - messages.scrollTop <= 60) {
+    messages.scrollTop = messages.scrollHeight + 10000};
+  console.log(messages.scrollHeight - messages.clientHeight - messages.scrollTop)
 };
 
 //Needs to be revamped to have one, maybe two ways of outputting server emits
