@@ -31,8 +31,8 @@ def connect():
     print(f'players connected is {world.players}')
     session['player_id'] = player.id
     join_room(location)
-    player.connection()
     socketio.emit('event', {'message': f'{username} has connected to the server'})
+    player.connection()
 
 #Event that handles disconnection. Unsure if I should be saving player information on disconnect or periodically. Likely both. Need to remove the player and client from the list of active connections. If all players are disconnected, world state should be saved and server activity spun down.
 @socketio.on('disconnect')

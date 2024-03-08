@@ -82,7 +82,7 @@ default_stats = {
 'agility': 10
 }
 class Character(Entity):
-    def __init__(self, name, description, health=100, level=1, location='0,0', stats=default_stats, deceased=False) -> None:
+    def __init__(self, name, description, health=100, level=1, location='0,0', stats=dict(default_stats), deceased=False) -> None:
         super().__init__(name, description)
         self.health = health #All characters should have a health value
         self.level = level #All characters should have a level value
@@ -94,7 +94,7 @@ class Character(Entity):
 
 #Class that users control to interact with the world. Unsure if I need to have this mixed in with the models side or if it would be easier to pickle the entire class and pass that to the database?
 class Player(Character):
-    def __init__(self, id, account, name, description, health=100, level=1, location='0,0', stats=default_stats, deceased=False) -> None:
+    def __init__(self, id, account, name, description, health=100, level=1, location='0,0', stats=dict(default_stats), deceased=False) -> None:
         super().__init__(name, description, health, level, location, stats, deceased)
         self.id = id
         self.account = account #User account associated with the player character
@@ -103,6 +103,8 @@ class Player(Character):
 
     def connection(self):
         events.world.rooms[self.location].contents['Players'].update({self.id: self})
+        socketio.emit('event', {'message': events.world.rooms[self.location].description}, to=self.session_id)
+        events.world.rooms[self.location].describe_contents(self)
 
     def disconnection(self):
         del events.world.rooms[self.location].contents['Players'][self.id]
@@ -127,24 +129,9 @@ class Player(Character):
         socketio.emit('event', {'message': f'{self.name} moves towards the {direction}'}, room=self.location)
         if self.id in room.contents['Players']:
             del room.contents['Players'][self.id]
+        socketio.emit('event', {'message': f'You move towards the {direction}'}, to=self.session_id)
 
-
-        lat = int(self.location[:self.location.index(',')])
-        lon = int(self.location[self.location.index(',')+1:])
-        if direction == 'n' or direction == 'north':
-            lon += 1
-            socketio.emit('event', {'message': 'You move towards the north'}, to=self.session_id)
-        if direction == 's' or direction == 'south':
-            lon -= 1
-            socketio.emit('event', {'message': 'You move towards the south'}, to=self.session_id)
-        if direction == 'e' or direction == 'east':
-            lat += 1
-            socketio.emit('event', {'message': 'You move towards the east'}, to=self.session_id)
-        if direction == 'w' or direction == 'west':
-            lat -= 1
-            socketio.emit('event', {'message': 'You move towards the west'}, to=self.session_id)
-
-        new_location = f'{lat},{lon}'
+        new_location = room.exits[direction]
         came_from = [i for i in events.world.rooms[new_location].exits if events.world.rooms[new_location].exits[i]==self.location]
         socketio.emit('event', {'message': f'{self.name} arrives from the {came_from[0]}'}, room=new_location)
         socketio.sleep(.5)
@@ -157,7 +144,7 @@ class Player(Character):
 #Class that is controlled by the server. Capable of being interacted with.
 class NPC(Character):
     id = itertools.count()
-    def __init__(self, name, description, deceased, health, level, location, home, stats) -> None:
+    def __init__(self, name, description, deceased, health, level, location, home, stats=dict(default_stats)) -> None:
         super().__init__(name, description, deceased, health, level, location, stats)
         self.id = next(NPC.id)
         self.home = home #Spawn location if NPC is killed. Can also double as a bound to prevent NPC from wandering too far from home during world timer movement
