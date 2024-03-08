@@ -1,36 +1,3 @@
-import dill
-import itertools
-
-
-#Overall class for any interactable object in the world
-class Entity():
-    def __init__(self, name, description) -> None:
-        self.name = name #Shorthand name for an entity
-        self.description = description #Every entity needs to be able to be looked at
-
-    #Test function currently, but every entity needs to be able to describe itself when looked at
-    def describe(self):
-        pass
-
-#Class for rooms. Rooms should contain all other objects (NPCs, Items, Players, anything else that gets added)
-class Room(Entity):
-    id = itertools.count()
-    def __init__(self, name, description, position, exits, icon, contents={'NPCs': {}, 'Players': {}, 'Items': {}}) -> None:
-        super().__init__(name, description)
-        self.id = next(Room.id)
-        self.position = position #Coordinates in the grid system for a room, will be used when a character moves rooms
-        self.exits = exits #List of rooms that are connected to this room. Should be N,S,E,W but may expand so a player can "move/go shop or someting along those lines"
-        self.icon = icon #Icon for the world map, should consist of two ASCII characters (ie: "/\" for a mountain)
-        self.contents = contents #Dictionary containing all NPCs, Players, and Items currently in the room. Values will be modified depending on character movement, NPC generation, and item movement
-
-    def describe_contents(self, caller):
-        output = ''
-        print(f'Room Object: {id(self)}')
-        print(f'Room Name: {self.name}')
-        print(f'Room Position: {self.position}')
-        print(f'Room Contents: {self.contents}')
-        return output
-
 room_dict = {
     (0,0): {
         'name': 'Town Square',
@@ -122,12 +89,12 @@ room_dict = {
     }
 }
 
-rooms = {}
-for room in room_dict.values():
-    new_room = Room(room['name'], room['description'], room['position'], room['exits'], room['icon'])
-    rooms.update({new_room.position: new_room})
-with open('app/data/room_db.pkl', 'wb') as dill_file:
-   dill.dump(rooms, dill_file)
+# rooms = {}
+# for room in room_dict.values():
+#     new_room = Room(room['name'], room['description'], room['position'], room['exits'], room['icon'])
+#     rooms.update({new_room.position: new_room})
+# with open('app/data/room_db.pkl', 'wb') as dill_file:
+#    dill.dump(rooms, dill_file)
 
 # with open('app/data/room_db.pkl', 'rb') as dill_file:
 #     rooms = dill.load(dill_file)

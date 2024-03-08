@@ -11,14 +11,13 @@ import dill
 
 client_list = [] #List of clients currently connected
 world = objects.World() #Instatiating world class to hold all rooms, players, and characters
-
 #This is an event that occurs whenever a new connection is detected by the socketio server. Connection needs to properly connect the user with their Player object, update the Player object's session_id so private server emits can be transmitted to that player only
 @socketio.on('connect')
 def connect():
     active_player = current_user.accounts.filter(PlayerAccount.is_active == True).first() #Pulls the active player information
     if not active_player.player_info: #Checks to see if the active player is a new player
         player = objects.Player(id=active_player.id, name=active_player.player_name, description="A newborn player, fresh to the world.", account=active_player.user_id)
-        print(f'id = {player.id}, name = {player.name}, description = {player.description}, health = {player.health}, level = {player.level}, stats = {player.stats}, location = {player.location}, inventory = {player.inventory}') #Creates a new player object
+        #Creates a new player object
         active_player.player_info = dill.dumps(player) #Pickles and writes new player object to active player info
         active_player.save() #Saves pickled data to player database
     else:
@@ -32,8 +31,7 @@ def connect():
     print(f'players connected is {world.players}')
     session['player_id'] = player.id
     join_room(location)
-    print(player.location)
-    print(player, world.rooms[location].name, world.rooms[location].contents['Players'])
+    player.connection()
     socketio.emit('event', {'message': f'{username} has connected to the server'})
 
 #Event that handles disconnection. Unsure if I should be saving player information on disconnect or periodically. Likely both. Need to remove the player and client from the list of active connections. If all players are disconnected, world state should be saved and server activity spun down.
@@ -48,10 +46,8 @@ def disconnect():
     player_account.player_info = dill.dumps(player)
     player_account.save()
     del world.players[player_id]
-    print(f'connected players: {world.players}')
-    print(f'client list is {client_list}')
     leave_room(room)
-
+    player.disconnection()
     socketio.emit('event', {'message': f'{player.name} has left the server'})
 
 

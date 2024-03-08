@@ -58,7 +58,7 @@ def look(player, room, data=''):
     player.look(data=data, room=room)
 
 #These are primarily test functions to make sure the world timer is functional
-def test(player, player_id, sid, location, data):
+def test(player, data):
     events.world.world_test()
 
 def save(player, player_id, sid, location, data):

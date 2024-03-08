@@ -4,29 +4,32 @@ import app.blueprints.main.events as events
 import dill
 import itertools
 from flask_socketio import join_room, leave_room
+import app.blueprints.main.rooms as room_file
 
 #World class that holds all entities
 class World():
     def __init__(self) -> None:
-        with open('app/data/room_db.pkl', 'rb') as dill_file:
-            rooms = dill.load(dill_file)
-            self.rooms = rooms
-            self.players = {}
+        rooms = {}
+        for room in room_file.room_dict.values():
+            new_room = Room(room['name'], room['description'], room['position'], room['exits'], room['icon'])
+            rooms.update({new_room.position: new_room})
+        self.rooms = rooms
+        self.players = {}
 
     def world_test(self):
-        print(f'World initialized with {self.rooms}')
-        socketio.emit('event', {'message': self.rooms['0,0'].description})
+        for room in self.rooms.values():
+            print(id(room), room.name, room.contents)
 
     #Might not use this, and instead use individual pickles for each entity type for modularization
-    def world_save(self):
-        with open('app/data/world_db.pkl', 'wb') as dill_file:
-            dill.dump(self, dill_file)
-        socketio.emit('event', {'message': 'world saved'})
+    # def world_save(self):
+    #     with open('app/data/world_db.pkl', 'wb') as dill_file:
+    #         dill.dump(self, dill_file)
+    #     socketio.emit('event', {'message': 'world saved'})
 
-    def room_save(self):
-        with open('app/data/room_db.pkl', 'wb') as dill_file:
-            dill.dump(self.rooms, dill_file)
-        socketio.emit('event', {'message': 'rooms saved'})
+    # def room_save(self):
+    #     with open('app/data/room_db.pkl', 'wb') as dill_file:
+    #         dill.dump(self.rooms, dill_file)
+    #     socketio.emit('event', {'message': 'rooms saved'})
 
 
 #Overall class for any interactable object in the world
@@ -42,19 +45,31 @@ class Entity():
 #Class for rooms. Rooms should contain all other objects (NPCs, Items, Players, anything else that gets added)
 class Room(Entity):
     id = itertools.count()
-    def __init__(self, name, description, position, exits, icon, contents={'NPCs': {}, 'Players': {}, 'Items': {}}) -> None:
+    def __init__(self, name, description, position, exits, icon) -> None:
         super().__init__(name, description)
         self.id = next(Room.id)
         self.position = position #Coordinates in the grid system for a room, will be used when a character moves rooms
         self.exits = exits #List of rooms that are connected to this room. Should be N,S,E,W but may expand so a player can "move/go shop or someting along those lines"
         self.icon = icon #Icon for the world map, should consist of two ASCII characters (ie: "/\" for a mountain)
-        self.contents = contents #Dictionary containing all NPCs, Players, and Items currently in the room. Values will be modified depending on character movement, NPC generation, and item movement
+        self.contents = {'NPCs': {}, 'Players': {}, 'Items': {}} #Dictionary containing all NPCs, Players, and Items currently in the room. Values will be modified depending on character movement, NPC generation, and item movement
 
     def describe_contents(self, caller):
         output = ''
-        print('test')
-        print(f'room contents is {self.contents["Players"]}')
-        return output
+        player_list = dict(self.contents['Players'])
+        del player_list[caller.id]
+        player_key = list(enumerate(player_list))
+        if len(player_list) == 0:
+            pass
+        elif len(player_list) == 1:
+            socketio.emit('event', {'message': f'{player_list[player_key[0][1]].name} stands here.'}, to=caller.session_id)
+        elif len(player_list) == 2:
+            socketio.emit('event', {'message': f'{player_list[player_key[0][1]].name} and {player_list[player_key[1][1]].name} stand here.'}, to=caller.session_id)
+        else:
+            for i in range(len(player_list)):
+                if i == len(player_list)-1:
+                    output += f'and {player_list[player_key[i][1]].name} stand here.'
+                else: output += f'{player_list[player_key[i][1]].name}, '
+            socketio.emit('event', {'message': output}, to=caller.session_id)
 
 
 #Broad class for any entity capable of independent and autonomous action that affects the world in some way
@@ -67,35 +82,36 @@ default_stats = {
 'agility': 10
 }
 class Character(Entity):
-    def __init__(self, name, description, health=100, level=1, location='0,0', stats=default_stats, deceased=False, inventory = []) -> None:
+    def __init__(self, name, description, health=100, level=1, location='0,0', stats=default_stats, deceased=False) -> None:
         super().__init__(name, description)
         self.health = health #All characters should have a health value
         self.level = level #All characters should have a level value
         self.location = location #All characters should have a location, reflecting their current room and referenced when moving
         self.stats = stats #All characters should have a stat block.
         self.deceased = deceased #Indicator of if a character is alive or not. If True, inventory can be looted
-        self.inventory = inventory #List of items in character's inventory. May swap to a dictionary of lists so items can be placed in categories
+        self.inventory = [] #List of items in character's inventory. May swap to a dictionary of lists so items can be placed in categories
 
 
 #Class that users control to interact with the world. Unsure if I need to have this mixed in with the models side or if it would be easier to pickle the entire class and pass that to the database?
 class Player(Character):
-    def __init__(self, id, account, name, description, health=100, level=1, location='0,0', stats=default_stats, deceased=False, inventory=[]) -> None:
-        super().__init__(name, description, health, level, location, stats, deceased, inventory)
+    def __init__(self, id, account, name, description, health=100, level=1, location='0,0', stats=default_stats, deceased=False) -> None:
+        super().__init__(name, description, health, level, location, stats, deceased)
         self.id = id
         self.account = account #User account associated with the player character
         self.session_id = '' #Session ID so messages can be broadcast to players without other members of a room or server seeing the message. Session ID is unique to every connection, so part of the connection process must be to assign the new value to the player's session_id
+        self.inventory = []
 
     def connection(self):
         events.world.rooms[self.location].contents['Players'].update({self.id: self})
 
     def disconnection(self):
-        pass
+        del events.world.rooms[self.location].contents['Players'][self.id]
 
     def look(self, data, room):
         if data == '':
             socketio.emit('event', {'message': self.location}, to=self.session_id)
             socketio.emit('event', {'message': room.description}, to=self.session_id)
-            socketio.emit('event', {'message': room.describe_contents(self)}, to=self.session_id)
+            room.describe_contents(self)
         else:
             socketio.emit('event', {'message': 'this will eventually be a call to a class\'s .description to return a look statement.'}, to=self.session_id)
     
@@ -110,10 +126,7 @@ class Player(Character):
         leave_room(self.location)
         socketio.emit('event', {'message': f'{self.name} moves towards the {direction}'}, room=self.location)
         if self.id in room.contents['Players']:
-            print(f"{room.contents['Players'][self.id].name} removed from {room.name}, object: {id(room)}")
-            print(events.world)
             del room.contents['Players'][self.id]
-            print(room.contents)
 
 
         lat = int(self.location[:self.location.index(',')])
@@ -137,16 +150,18 @@ class Player(Character):
         socketio.sleep(.5)
         self.location = new_location
         join_room(self.location)
-        events.world.rooms[self.location].contents['Players'][self.id] = self
+        events.world.rooms[self.location].contents['Players'].update({self.id: self})
         socketio.emit('event', {'message': events.world.rooms[self.location].description}, to=self.session_id)
+        events.world.rooms[self.location].describe_contents(self)
 
 #Class that is controlled by the server. Capable of being interacted with.
 class NPC(Character):
     id = itertools.count()
-    def __init__(self, name, description, deceased, health, level, location, home, stats, inventory=[]) -> None:
-        super().__init__(name, description, deceased, health, level, location, stats, inventory)
+    def __init__(self, name, description, deceased, health, level, location, home, stats) -> None:
+        super().__init__(name, description, deceased, health, level, location, stats)
         self.id = next(NPC.id)
         self.home = home #Spawn location if NPC is killed. Can also double as a bound to prevent NPC from wandering too far from home during world timer movement
+        self.inventory = []
 
 #Class that is incapable of autonomous action. Inanimate objects and such.
 class Item(Entity):
