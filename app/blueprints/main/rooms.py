@@ -9,7 +9,8 @@ room_dict = {
             'east': '1,0',
             'west': '-1,0'
         },
-        'icon': '()'
+        'icon': '()',
+        'ambiance_list': ['People move around you, busy about their day', 'The local town drunk stumbles by, muttering to people nobody sees.']
     },
     (0,1): {
         'name': 'Pavilion',
@@ -20,7 +21,8 @@ room_dict = {
             'east': '1,1',
             'west': '-1,1'
         },
-        'icon': '/\\'
+        'icon': '/\\',
+        'ambiance_list': ['You hear a heated argument from the east.', 'A small rodent scurries by your feet.']
     },
     (0,-1): {
         'name': 'Gravel Path',
@@ -31,7 +33,8 @@ room_dict = {
             'east': '1,-1',
             'west': '-1,-1'
         },
-        'icon': '||'
+        'icon': '||',
+        'ambiance_list': ['A rabbit hops past, small and furry.', 'A light breeze stirs your shirt.']
     },
     (1,0): {
         'name': 'Neighborhood',
@@ -40,7 +43,8 @@ room_dict = {
         'exits': {
             'west': '0,0'
         },
-        'icon': '_^'
+        'icon': '_^',
+        'ambiance_list': ['A small child wanders past, looking for something.', 'A wagon clatters in the distance.']
     },
     (-1,0): {
         'name': 'Barracks',
@@ -49,7 +53,8 @@ room_dict = {
         'exits': {
             'east': '0,0'
         },
-        'icon': '()'
+        'icon': '()',
+        'ambiance_list': ['The sound of clanging metal and shouts can be faintly heard.', 'A local town guard eyes you, wondering what your business is.']
     },
     (-1,1): {
         'name': 'Mayor\'s Courtyard',
@@ -59,7 +64,8 @@ room_dict = {
             'east': '0,1',
             'in': 'Mayoral Mansion'
         },
-        'icon': '^^'
+        'icon': '^^',
+        'ambiance_list': ['You can hear a distant wind chime.', 'A man pushing a small hand cart full of groceries hurries by, head bent.']
     },
     (1,1): {
         'name': 'General Store',
@@ -68,7 +74,8 @@ room_dict = {
         'exits': {
             'west': '0,1'
         },
-        'icon': 'oo'
+        'icon': 'oo',
+        'ambiance_list': ['You can faintly hear someone arguing about the price of goods from inside.', 'You see a group of adolescents making fun of you.']
     },
     (1,-1): {
         'name': 'Forest',
@@ -77,7 +84,8 @@ room_dict = {
         'exits': {
             'west': '0,-1'
         },
-        'icon': 'Tt'
+        'icon': 'Tt',
+        'ambiance_list': ['A twig snaps, and your heart jumps.', 'You see a dark shape flit through the trees.']
     },
     (-1,-1): {
         'name': 'Lake',
@@ -86,16 +94,18 @@ room_dict = {
         'exits': {
             'east': '0,-1',
         },
-        'icon': '~~'
+        'icon': '~~',
+        'ambiance_list': ['Birds chirp overhead.', 'The sound of the lake lapping at the shore make you want to close your eyes.']
     },
     'Mayoral Mansion': {
-    'name': 'The Mayoral Mansion',
-    'description': 'Soaring arches, glass chandeliers, thick rugs. The mayor of this town is clearly not hurting for money.',
-    'position': 'Mayoral Mansion',
-    'exits': {
-        'out': '-1,1',
-    },
-    'icon': '^^'
+        'name': 'The Mayoral Mansion',
+        'description': 'Soaring arches, glass chandeliers, thick rugs. The mayor of this town is clearly not hurting for money.',
+        'position': 'Mayoral Mansion',
+        'exits': {
+            'out': '-1,1',
+        },
+        'icon': '^^',
+        'ambiance_list': ['A servant runs past, clearly in hurry.', 'You can hear someone get berated for their poor cleaning job.']
     }
 }
 

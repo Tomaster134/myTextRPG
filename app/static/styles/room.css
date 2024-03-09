@@ -1,24 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Trade+Winds&display=swap");
+
+body {
+  background-image: url(../imgs/forest.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(4px);
+}
+
+.papyrus-box {
+  background-image: url(../imgs/papyrus.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 1800px;
+  height: 920px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
 .room-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid black;
   margin: 30px;
   padding: 20px;
+  bottom: 2%;
+  position: relative;
 }
 
 .room-header {
   text-align: center;
-  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 3px;
+  font-family: "Trade Winds", system-ui;
+  font-size: 50px;
+  line-height: 100%;
 }
 
 .message-box {
   overflow: none;
   position: relative;
-  width: 50vw;
-  height: 75vh;
-  background-color: black;
-  padding-right: 10px;
+  width: 800px;
+  height: 600px;
+  background-color: rgba(0, 0, 0, 0.88);
+  padding-right: 15px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 1px, rgba(0, 0, 0, 0.4) 0px 4px 2px,
+    rgba(0, 0, 0, 0.4) 0px 8px 4px, rgba(0, 0, 0, 0.4) 0px 16px 8px,
+    rgba(0, 0, 0, 0.4) 0px 32px 16px;
 }
 
 .messages {
@@ -28,7 +60,7 @@
   max-height: 90%;
   color: white;
   margin: 0px 10px 0px 10px;
-  width: 99%;
+  width: 98.6%;
   scrollbar-gutter: stable;
   scroll-margin-top: 50px;
 }
@@ -41,12 +73,12 @@
 }
 
 #message {
-  width: 46vw;
+  width: 725px;
   height: 40px;
 }
 
 #send-btn {
-  width: 3vw;
+  width: 57px;
   margin-left: 5px;
   margin-right: 5px;
 }
@@ -60,7 +92,8 @@
 }
 
 .msg-date {
-  font-size: 0.5rem;
+  margin-top: 8px;
+  font-size: 0.6rem;
   position: absolute;
   right: 15px;
 }

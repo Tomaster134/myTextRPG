@@ -8,20 +8,19 @@ import app.blueprints.main.rooms as room_file
 import app.blueprints.main.NPCs as npc_file
 from random import randint
 
-
 #World class that holds all entities
 class World():
     def __init__(self) -> None:
         rooms = {}
         for room in room_file.room_dict.values():
-            new_room = Room(room['name'], room['description'], room['position'], room['exits'], room['icon'])
+            new_room = Room(room['name'], room['description'], room['position'], room['exits'], room['icon'], room['ambiance_list'])
             rooms.update({new_room.position: new_room})
         self.rooms = rooms
         self.players = {}
 
         npcs = {}
         for npc in npc_file.npc_dict.values():
-            new_npc = NPC(npc['name'], npc['description'], npc['deceased'], npc['health'], npc['level'], npc['location'], npc['home'], npc['ambiance_list'])
+            new_npc = NPC(npc['name'], npc['aliases'], npc['description'], npc['deceased'], npc['health'], npc['level'], npc['location'], npc['home'], npc['ambiance_list'])
             print(new_npc.name, new_npc.id, new_npc.description, new_npc.deceased, new_npc.health, new_npc.level, new_npc.location, new_npc.home)
             npcs.update({new_npc.id: new_npc})
             self.rooms[new_npc.location].contents['NPCs'].update({new_npc.id: new_npc})
@@ -56,31 +55,54 @@ class Entity():
 #Class for rooms. Rooms should contain all other objects (NPCs, Items, Players, anything else that gets added)
 class Room(Entity):
     id = itertools.count()
-    def __init__(self, name, description, position, exits, icon) -> None:
+    def __init__(self, name, description, position, exits, icon, ambiance_list) -> None:
         super().__init__(name, description)
         self.id = next(Room.id)
         self.position = position #Coordinates in the grid system for a room, will be used when a character moves rooms
         self.exits = exits #List of rooms that are connected to this room. Should be N,S,E,W but may expand so a player can "move/go shop or someting along those lines"
         self.icon = icon #Icon for the world map, should consist of two ASCII characters (ie: "/\" for a mountain)
         self.contents = {'NPCs': {}, 'Players': {}, 'Items': {}} #Dictionary containing all NPCs, Players, and Items currently in the room. Values will be modified depending on character movement, NPC generation, and item movement
+        self.ambiance_list = ambiance_list
+
+    def describe_exits(self):
+        output = '<strong>[</strong> Exits: '
+        for each in self.exits:
+            output += f'⟪<strong>{each}</strong>⟫ '
+        output += '<strong>]</strong>'
+        return output
 
     def describe_contents(self, caller):
         output = ''
         player_list = dict(self.contents['Players'])
         del player_list[caller.id]
         player_key = list(enumerate(player_list))
-        if len(player_list) == 0:
+        npc_list = dict(self.contents['NPCs'])
+        npc_key = list(enumerate(npc_list))
+        total_list = []
+        for i in range(len(player_list)):
+            total_list.append(f'<em><strong>{player_list[player_key[i][1]].name}</strong></em>')
+        for i in range(len(npc_list)):
+            total_list.append(npc_list[npc_key[i][1]].name)
+        if len(total_list) == 0:
             pass
-        elif len(player_list) == 1:
-            socketio.emit('event', {'message': f'{player_list[player_key[0][1]].name} stands here.'}, to=caller.session_id)
-        elif len(player_list) == 2:
-            socketio.emit('event', {'message': f'{player_list[player_key[0][1]].name} and {player_list[player_key[1][1]].name} stand here.'}, to=caller.session_id)
+        elif len(total_list) == 1:
+            output += f'{total_list[0]} stands here.'
+        elif len(total_list) == 2:
+            output += f'{total_list[0]} and {total_list[1]} stand here.'
         else:
-            for i in range(len(player_list)):
-                if i == len(player_list)-1:
-                    output += f'and {player_list[player_key[i][1]].name} stand here.'
-                else: output += f'{player_list[player_key[i][1]].name}, '
-            socketio.emit('event', {'message': output}, to=caller.session_id)
+            for i in range(len(total_list)):
+                if i == len(total_list)-1:
+                    output += f'and {total_list[i]} stand here.'
+                else: output += f'{total_list[i]}, '
+        socketio.emit('event', {'message': output}, to=caller.session_id)
+        
+        socketio.emit('event', {'message': self.describe_exits()}, to=caller.session_id)
+
+            
+
+    def ambiance(self):
+        if randint(1,5) == 5:
+            socketio.emit('event', {'message': f'{self.ambiance_list[randint(0,len(self.ambiance_list)-1)]}'}, to=self.position)
 
 
 #Broad class for any entity capable of independent and autonomous action that affects the world in some way
@@ -120,13 +142,36 @@ class Player(Character):
     def disconnection(self):
         del events.world.rooms[self.location].contents['Players'][self.id]
 
+    def set_description(self, data):
+        self.description = data
+        socketio.emit('event', {'message': f'Your description has been updated to "{self.description}"'}, to=self.session_id)
+
     def look(self, data, room):
         if data == '':
             socketio.emit('event', {'message': self.location}, to=self.session_id)
             socketio.emit('event', {'message': room.description}, to=self.session_id)
             room.describe_contents(self)
+        elif data in ['me', 'myself']:
+            socketio.emit('event', {'message': 'You really want me to describe you, to <em>you</em>? Get your kicks somewhere else, bucko.'}, to=self.session_id)
         else:
-            socketio.emit('event', {'message': 'this will eventually be a call to a class\'s .description to return a look statement.'}, to=self.session_id)
+            for player in room.contents['Players'].values():
+                if player == self:
+                    continue
+                if player.name.lower().startswith(data.lower()):
+                    socketio.emit('event', {'message': player.description}, to=self.session_id)
+                    return
+            for npc in room.contents['NPCs'].values():
+                for alias in npc.aliases:
+                    if alias.lower().startswith(data.lower()):
+                        socketio.emit('event', {'message': npc.description}, to=self.session_id)
+                        return
+            for direction, room in room.exits.items():
+                if direction.lower().startswith(data.lower()):
+                    if events.world.rooms[room].name.startswith('The'):
+                        socketio.emit('event', {'message': f'{events.world.rooms[room].name} lies that way.'})
+                        return
+                    socketio.emit('event', {'message': f'The {events.world.rooms[room].name} lies that way.'})
+                    return
     
     def speak(self, data):
         socketio.emit('event', {'message': f'{self.name} says "{data}"'}, room=self.location, include_self=False)
@@ -165,9 +210,10 @@ class Player(Character):
 #Class that is controlled by the server. Capable of being interacted with.
 class NPC(Character):
     id = itertools.count()
-    def __init__(self, name, description, deceased, health, level, location, home, ambiance_list, stats=dict(default_stats)) -> None:
+    def __init__(self, name, aliases, description, deceased, health, level, location, home, ambiance_list, stats=dict(default_stats)) -> None:
         self.id = next(NPC.id)
         self.name = name
+        self.aliases = aliases
         self.description = description
         self.deceased = deceased
         self.health = health
@@ -179,7 +225,7 @@ class NPC(Character):
 
     def ambiance(self):
         if randint(1,5) == 5:
-            socketio.emit('event', {'message': f'{self.ambiance_list[randint(0,1)]}'}, to=self.location)
+            socketio.emit('event', {'message': f'{self.ambiance_list[randint(0,len(self.ambiance_list)-1)]}'}, to=self.location)
 
 
 #Class that is incapable of autonomous action. Inanimate objects and such.

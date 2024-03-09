@@ -21,14 +21,13 @@ def index():
 #Function that runs when there are players in the world. Uses sleep and will eventually call all objects that need to execute methods without user input for world ambience. When no players are present should break and stop the function
 def world_timer():
      socketio.sleep(10)
-     count = 0
      while True:
             if events.client_list:
-                socketio.emit('event', {'message': f'this is a global emitter on count {count}'})
-                count += 1
                 socketio.sleep(10)
                 for character in events.world.npcs.values():
                      character.ambiance()
+                for room in events.world.rooms.values():
+                     room.ambiance()
             else: break
 
 #Route for the room. Calls the world timer function if the client list is empty to begin a world timer.

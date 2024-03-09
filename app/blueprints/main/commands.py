@@ -14,16 +14,17 @@ def client(data):
     content = {
         'player': current_player,
         'room': current_room,
-        'command': data['command'],
+        'command': data['command'].lower(),
         'data': data['data'],
     }
 
     if content['command'] == 'say':
         say(content['player'], content['data'])
 
-    if content['command'] in ['move', 'go', 'north', 'south', 'east', 'west', 'n', 's', 'e', 'w', 'out', 'in']:
+    if content['command'].lower() in ['move', 'go', 'north', 'south', 'east', 'west', 'n', 's', 'e', 'w', 'out', 'in']:
+        content['data'] = content['data'].lower()
         if not content['data']:
-            content['data'] = content['command']
+            content['data'] = content['command'].lower()
         if content['data'] == 'n':
             content['data'] = 'north'
         if content['data'] == 's':
@@ -32,6 +33,7 @@ def client(data):
             content['data'] = 'east'
         if content['data'] == 'w':
             content['data'] = 'west'
+        
         move(player=content['player'], direction=content['data'], room=content['room'])
 
     if content['command'] == 'look' or content['command'] == 'l':
@@ -42,6 +44,9 @@ def client(data):
 
     if content['command'] == 'save':
         save(content['player'], content['data'])
+    
+    if content['command'] == '@describe':
+        set_description(content['player'], content['data'])
 
 
 
@@ -64,3 +69,6 @@ def test(player, data):
 def save(player, player_id, sid, location, data):
     events.world.world_save()
     events.world.room_save()
+
+def set_description(player, data):
+    player.set_description(data)
