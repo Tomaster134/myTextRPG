@@ -21,7 +21,7 @@ def client(data):
     if content['command'] == 'say':
         say(content['player'], content['data'])
 
-    if content['command'] in ['move', 'go', 'north', 'south', 'east', 'west', 'n', 's', 'e', 'w']:
+    if content['command'] in ['move', 'go', 'north', 'south', 'east', 'west', 'n', 's', 'e', 'w', 'out', 'in']:
         if not content['data']:
             content['data'] = content['command']
         if content['data'] == 'n':

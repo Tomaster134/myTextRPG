@@ -27,6 +27,8 @@ def world_timer():
                 socketio.emit('event', {'message': f'this is a global emitter on count {count}'})
                 count += 1
                 socketio.sleep(10)
+                for character in events.world.npcs.values():
+                     character.ambiance()
             else: break
 
 #Route for the room. Calls the world timer function if the client list is empty to begin a world timer.

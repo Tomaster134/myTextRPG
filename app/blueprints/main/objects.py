@@ -5,6 +5,9 @@ import dill
 import itertools
 from flask_socketio import join_room, leave_room
 import app.blueprints.main.rooms as room_file
+import app.blueprints.main.NPCs as npc_file
+from random import randint
+
 
 #World class that holds all entities
 class World():
@@ -15,6 +18,14 @@ class World():
             rooms.update({new_room.position: new_room})
         self.rooms = rooms
         self.players = {}
+
+        npcs = {}
+        for npc in npc_file.npc_dict.values():
+            new_npc = NPC(npc['name'], npc['description'], npc['deceased'], npc['health'], npc['level'], npc['location'], npc['home'], npc['ambiance_list'])
+            print(new_npc.name, new_npc.id, new_npc.description, new_npc.deceased, new_npc.health, new_npc.level, new_npc.location, new_npc.home)
+            npcs.update({new_npc.id: new_npc})
+            self.rooms[new_npc.location].contents['NPCs'].update({new_npc.id: new_npc})
+        self.npcs = npcs
 
     def world_test(self):
         for room in self.rooms.values():
@@ -82,7 +93,7 @@ default_stats = {
 'agility': 10
 }
 class Character(Entity):
-    def __init__(self, name, description, health=100, level=1, location='0,0', stats=dict(default_stats), deceased=False) -> None:
+    def __init__(self, name, description, health, level, location, stats, deceased) -> None:
         super().__init__(name, description)
         self.health = health #All characters should have a health value
         self.level = level #All characters should have a level value
@@ -126,13 +137,23 @@ class Player(Character):
             socketio.emit('event', {'message': 'You can\'t go that way.'}, to=self.session_id)
             return
         leave_room(self.location)
-        socketio.emit('event', {'message': f'{self.name} moves towards the {direction}'}, room=self.location)
+        if direction in ['out', 'in']:
+            socketio.emit('event', {'message': f'{self.name} moves towards the {room.exits[direction]}'}, room=self.location)
+        else:
+            socketio.emit('event', {'message': f'{self.name} moves towards the {direction}'}, room=self.location)
         if self.id in room.contents['Players']:
             del room.contents['Players'][self.id]
-        socketio.emit('event', {'message': f'You move towards the {direction}'}, to=self.session_id)
+        if direction in ['out', 'in']:
+            socketio.emit('event', {'message': f'You move towards the {events.world.rooms[room.exits[direction]].name}'}, to=self.session_id)
+        else:
+            socketio.emit('event', {'message': f'You move towards the {direction}'}, to=self.session_id)
 
         new_location = room.exits[direction]
-        came_from = [i for i in events.world.rooms[new_location].exits if events.world.rooms[new_location].exits[i]==self.location]
+        if direction in ['out', 'in']:
+            print(events.world.rooms[new_location].exits)
+            came_from = [i for i in events.world.rooms[new_location].exits if events.world.rooms[new_location].exits[i]==self.location]
+        else:
+            came_from = [i for i in events.world.rooms[new_location].exits if events.world.rooms[new_location].exits[i]==self.location]
         socketio.emit('event', {'message': f'{self.name} arrives from the {came_from[0]}'}, room=new_location)
         socketio.sleep(.5)
         self.location = new_location
@@ -144,11 +165,22 @@ class Player(Character):
 #Class that is controlled by the server. Capable of being interacted with.
 class NPC(Character):
     id = itertools.count()
-    def __init__(self, name, description, deceased, health, level, location, home, stats=dict(default_stats)) -> None:
-        super().__init__(name, description, deceased, health, level, location, stats)
+    def __init__(self, name, description, deceased, health, level, location, home, ambiance_list, stats=dict(default_stats)) -> None:
         self.id = next(NPC.id)
+        self.name = name
+        self.description = description
+        self.deceased = deceased
+        self.health = health
+        self.level = level
+        self.location = location
         self.home = home #Spawn location if NPC is killed. Can also double as a bound to prevent NPC from wandering too far from home during world timer movement
+        self.ambiance_list = ambiance_list
         self.inventory = []
+
+    def ambiance(self):
+        if randint(1,5) == 5:
+            socketio.emit('event', {'message': f'{self.ambiance_list[randint(0,1)]}'}, to=self.location)
+
 
 #Class that is incapable of autonomous action. Inanimate objects and such.
 class Item(Entity):

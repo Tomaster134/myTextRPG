@@ -52,11 +52,12 @@ room_dict = {
         'icon': '()'
     },
     (-1,1): {
-        'name': 'Mayor\'s House',
+        'name': 'Mayor\'s Courtyard',
         'description': 'You stand before the mayor\'s house. It is opulent and makes you want to rage against the ruling class.',
         'position': '-1,1',
         'exits': {
             'east': '0,1',
+            'in': 'Mayoral Mansion'
         },
         'icon': '^^'
     },
@@ -86,6 +87,15 @@ room_dict = {
             'east': '0,-1',
         },
         'icon': '~~'
+    },
+    'Mayoral Mansion': {
+    'name': 'The Mayoral Mansion',
+    'description': 'Soaring arches, glass chandeliers, thick rugs. The mayor of this town is clearly not hurting for money.',
+    'position': 'Mayoral Mansion',
+    'exits': {
+        'out': '-1,1',
+    },
+    'icon': '^^'
     }
 }
 
