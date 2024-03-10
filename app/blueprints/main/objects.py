@@ -152,7 +152,7 @@ class Player(Character):
             socketio.emit('event', {'message': room.description}, to=self.session_id)
             room.describe_contents(self)
         elif data in ['me', 'myself']:
-            socketio.emit('event', {'message': 'You really want me to describe you, to <em>you</em>? Get your kicks somewhere else, bucko.'}, to=self.session_id)
+            socketio.emit('event', {'message': 'You really want me to describe you, to <em>you</em>? You really are something. Get your kicks somewhere else, bucko.'}, to=self.session_id)
         else:
             for player in room.contents['Players'].values():
                 if player == self:
@@ -172,6 +172,73 @@ class Player(Character):
                         return
                     socketio.emit('event', {'message': f'The {events.world.rooms[room].name} lies that way.'})
                     return
+                
+    def location_map(self):
+        self_map = []
+        for i in range(1,10):
+            lon, lat = self.location.split(',', 1)
+            lon = int(lon)
+            lat = int(lat)
+            if i == 1:
+                lat += 1
+                lon -= 1
+                try:
+                    self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
+                except KeyError:
+                    self_map.append('<span style="background-color: white">&nbsp;&nbsp;</span>')
+            if i == 2:
+                lat += 1
+                try:
+                    self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
+                except KeyError:
+                    self_map.append('<span style="background-color: white">&nbsp;&nbsp;</span>')
+            if i == 3:
+                lat += 1
+                lon += 1
+                try:
+                    self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}<br>')
+                except KeyError:
+                    self_map.append('<span style="background-color: white">&nbsp;&nbsp;</span><br>')
+            if i == 4:
+                lon -= 1
+                try:
+                    self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
+                except KeyError:
+                    self_map.append('<span style="background-color: white">&nbsp;&nbsp;</span>')
+            if i == 5:
+                self_map.append('<span style="background-color:DodgerBlue">()</span>')
+            if i == 6:
+                lon += 1
+                try:
+                    self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}<br>')
+                except KeyError:
+                    self_map.append('<span style="background-color: white">&nbsp;&nbsp;</span><br>')
+            if i == 7:
+                lat -= 1
+                lon -= 1
+                try:
+                    self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
+                except KeyError:
+                    self_map.append('<span style="background-color: white">&nbsp;&nbsp;</span>')
+            if i == 8:
+                lat -= 1
+                try:
+                    self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
+                except KeyError:
+                    self_map.append('<span style="background-color: white">&nbsp;&nbsp;</span>')
+            if i == 9:
+                lat -= 1
+                lon += 1
+                try:
+                    self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
+                except KeyError:
+                    self_map.append('<span style="background-color: white">&nbsp;&nbsp;</span>')
+            output = ''
+        for icon in self_map:
+            output += icon
+        print(output)
+        socketio.emit('event', {'message': f'<tt style="margin-bottom: 0">{output}</tt>'}, to=self.session_id)
+        
     
     def speak(self, data):
         socketio.emit('event', {'message': f'{self.name} says "{data}"'}, room=self.location, include_self=False)

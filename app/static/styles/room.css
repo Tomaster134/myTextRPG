@@ -97,3 +97,11 @@ body {
   position: absolute;
   right: 15px;
 }
+
+br {
+  line-height: 0% !important;
+}
+
+span {
+  line-height: 0px !important;
+}
