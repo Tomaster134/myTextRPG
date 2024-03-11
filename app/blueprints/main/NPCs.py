@@ -19,6 +19,6 @@ npc_dict = {
         'deceased': False,
         'health': 200,
         'level': 10,
-        'ambiance_list': ['The Mayor snaps at a servant, demanding wine.', 'The Mayor chuckles to himself, at a joke only he knows.', 'The Mayor looks askance at the dirt you\'ve tracked in from the outdoors.']
+        'ambiance_list': ['The Mayor snaps at a servant, demanding wine.', 'The Mayor chuckles to himself, at a joke only he knows.', 'The Mayor looks askance at the dirt you tracked in from the outdoors.']
     }
 }

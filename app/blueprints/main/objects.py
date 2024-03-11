@@ -21,9 +21,8 @@ class World():
         npcs = {}
         for npc in npc_file.npc_dict.values():
             new_npc = NPC(npc['name'], npc['aliases'], npc['description'], npc['deceased'], npc['health'], npc['level'], npc['location'], npc['home'], npc['ambiance_list'])
-            print(new_npc.name, new_npc.id, new_npc.description, new_npc.deceased, new_npc.health, new_npc.level, new_npc.location, new_npc.home)
-            npcs.update({new_npc.id: new_npc})
             self.rooms[new_npc.location].contents['NPCs'].update({new_npc.id: new_npc})
+            npcs.update({new_npc.id: new_npc})
         self.npcs = npcs
 
     def world_test(self):
@@ -94,8 +93,8 @@ class Room(Entity):
                 if i == len(total_list)-1:
                     output += f'and {total_list[i]} stand here.'
                 else: output += f'{total_list[i]}, '
+
         socketio.emit('event', {'message': output}, to=caller.session_id)
-        
         socketio.emit('event', {'message': self.describe_exits()}, to=caller.session_id)
 
             
@@ -133,6 +132,7 @@ class Player(Character):
         self.account = account #User account associated with the player character
         self.session_id = '' #Session ID so messages can be broadcast to players without other members of a room or server seeing the message. Session ID is unique to every connection, so part of the connection process must be to assign the new value to the player's session_id
         self.inventory = []
+        self.player_map = ''
 
     def connection(self):
         events.world.rooms[self.location].contents['Players'].update({self.id: self})
@@ -175,69 +175,81 @@ class Player(Character):
                 
     def location_map(self):
         self_map = []
-        for i in range(1,10):
-            lon, lat = self.location.split(',', 1)
-            lon = int(lon)
-            lat = int(lat)
-            if i == 1:
-                lat += 1
-                lon -= 1
-                try:
-                    self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
-                except KeyError:
-                    self_map.append('<span style="background-color: white">&nbsp;&nbsp;</span>')
-            if i == 2:
-                lat += 1
-                try:
-                    self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
-                except KeyError:
-                    self_map.append('<span style="background-color: white">&nbsp;&nbsp;</span>')
-            if i == 3:
-                lat += 1
-                lon += 1
-                try:
-                    self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}<br>')
-                except KeyError:
-                    self_map.append('<span style="background-color: white">&nbsp;&nbsp;</span><br>')
-            if i == 4:
-                lon -= 1
-                try:
-                    self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
-                except KeyError:
-                    self_map.append('<span style="background-color: white">&nbsp;&nbsp;</span>')
-            if i == 5:
-                self_map.append('<span style="background-color:DodgerBlue">()</span>')
-            if i == 6:
-                lon += 1
-                try:
-                    self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}<br>')
-                except KeyError:
-                    self_map.append('<span style="background-color: white">&nbsp;&nbsp;</span><br>')
-            if i == 7:
-                lat -= 1
-                lon -= 1
-                try:
-                    self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
-                except KeyError:
-                    self_map.append('<span style="background-color: white">&nbsp;&nbsp;</span>')
-            if i == 8:
-                lat -= 1
-                try:
-                    self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
-                except KeyError:
-                    self_map.append('<span style="background-color: white">&nbsp;&nbsp;</span>')
-            if i == 9:
-                lat -= 1
-                lon += 1
-                try:
-                    self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
-                except KeyError:
-                    self_map.append('<span style="background-color: white">&nbsp;&nbsp;</span>')
-            output = ''
+        if '0,' not in self.location and '1,' not in self.location and '2,' not in self.location and '3,' not in self.location and '4,' not in self.location and '5,' not in self.location and '6,' not in self.location and '7,' not in self.location and '8,' not in self.location and '9,' not in self.location:
+            for i in range(1,10):
+                if i != 5:
+                    if i == 3:
+                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span><br>')
+                    elif i == 6:
+                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span><br>')
+                    else:
+                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span>')
+                else: self_map.append('<span style="background-color:LightBlue; color: DodgerBlue">()</span>')
+        else:
+            for i in range(1,10):
+                lon, lat = self.location.split(',', 1)
+                lon = int(lon)
+                lat = int(lat)
+                if i == 1:
+                    lat += 1
+                    lon -= 1
+                    try:
+                        self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
+                    except KeyError:
+                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span>')
+                if i == 2:
+                    lat += 1
+                    try:
+                        self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
+                    except KeyError:
+                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span>')
+                if i == 3:
+                    lat += 1
+                    lon += 1
+                    try:
+                        self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}<br>')
+                    except KeyError:
+                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span><br>')
+                if i == 4:
+                    lon -= 1
+                    try:
+                        self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
+                    except KeyError:
+                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span>')
+                if i == 5:
+                    self_map.append('<span style="background-color:LightBlue; color: DodgerBlue">()</span>')
+                if i == 6:
+                    lon += 1
+                    try:
+                        self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}<br>')
+                    except KeyError:
+                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span><br>')
+                if i == 7:
+                    lat -= 1
+                    lon -= 1
+                    try:
+                        self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
+                    except KeyError:
+                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span>')
+                if i == 8:
+                    lat -= 1
+                    try:
+                        self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
+                    except KeyError:
+                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span>')
+                if i == 9:
+                    lat -= 1
+                    lon += 1
+                    try:
+                        self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
+                    except KeyError:
+                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span>')
+        output = '<tt style="margin-bottom: 0">'
         for icon in self_map:
             output += icon
-        print(output)
-        socketio.emit('event', {'message': f'<tt style="margin-bottom: 0">{output}</tt>'}, to=self.session_id)
+        output += '</tt>'
+        self.player_map = output
+        socketio.emit('map', {'map': self.player_map}, to=self.session_id)
         
     
     def speak(self, data):
@@ -270,6 +282,7 @@ class Player(Character):
         socketio.sleep(.5)
         self.location = new_location
         join_room(self.location)
+        self.location_map()
         events.world.rooms[self.location].contents['Players'].update({self.id: self})
         socketio.emit('event', {'message': events.world.rooms[self.location].description}, to=self.session_id)
         events.world.rooms[self.location].describe_contents(self)

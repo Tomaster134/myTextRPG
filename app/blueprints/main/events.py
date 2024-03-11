@@ -21,7 +21,7 @@ def connect():
         active_player.player_info = dill.dumps(player) #Pickles and writes new player object to active player info
         active_player.save() #Saves pickled data to player database
     else:
-        player = dill.loads(active_player.player_info) #Loads pickled data in to the player
+        player = dill.loads(active_player.player_info, ignore=False) #Loads pickled data in to the player
     username = player.name
     location = player.location
     player.session_id = request.sid
@@ -30,7 +30,9 @@ def connect():
     print(f'client list is {client_list}')
     print(f'players connected is {world.players}')
     session['player_id'] = player.id
+    session['player'] = player
     join_room(location)
+    player.location_map()
     socketio.emit('event', {'message': f'{username} has connected to the server'})
     player.connection()
 

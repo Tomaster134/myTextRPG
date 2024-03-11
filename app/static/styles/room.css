@@ -98,10 +98,18 @@ body {
   right: 15px;
 }
 
-br {
-  line-height: 0% !important;
+.map-content {
+  line-height: 32px;
+  font-size: 30px;
 }
 
-span {
-  line-height: 0px !important;
+.map-box {
+  top: 170px;
+  left: 350px;
+  position: absolute;
+}
+
+.map-header {
+  font-size: 40px;
+  font-family: "Trade Winds", system-ui;
 }

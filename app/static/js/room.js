@@ -2,38 +2,19 @@ let socketio = io();
 
 const messages = document.querySelector("#messages");
 const form = document.querySelector('#input-form')
+const mapBox = document.querySelector('#map-box')
 
 //Section needs to be revamped to maybe handle multiple server outputs with regards to formatting
-const createMessage = (username, msg) => {
-  const content = `
-    <div class="text">
-        <span class="msg-text">
-            <strong>${username}</strong>: ${msg}
-        </span>
-        <span class="msg-date">
-                ${new Date().toLocaleString()}
-        </span>
-    </div>
-    `;
-  messages.innerHTML += content;
-  if(messages.scrollHeight - messages.clientHeight - messages.scrollTop <= 60) {
-  messages.scrollTop = messages.scrollHeight + 10000};
-};
 
-const createStatus = (username, msg) => {
-  const content = `
-    <div class="text">
-        <span class="msg-text">
-            ${username} ${msg}
-        </span>
-        <span class="msg-date">
-                ${new Date().toLocaleString()}
-        </span>
+const createMap = (map) => {
+  const content = `<span class="map-header">MAP</span>
+    <div class="map-content">
+        ${map}
     </div>
     `;
-  messages.innerHTML += content;
-  if(messages.scrollHeight - messages.clientHeight - messages.scrollTop <= 60) {
-    messages.scrollTop = messages.scrollHeight + 10000};
+  mapBox.innerHTML = content;
+  console.log('map triggered')
+  console.log(map)
 };
 
 const createLook = (msg) => {
@@ -54,12 +35,9 @@ const createLook = (msg) => {
 };
 
 //Needs to be revamped to have one, maybe two ways of outputting server emits
-socketio.on("message", (data) => {
-  createMessage(data.username, data.message);
-});
 
-socketio.on("status", (data) => {
-  createStatus(data.username, data.message);
+socketio.on("map", (data) => {
+  createMap(data.map);
 });
 
 socketio.on("event", (data) => {

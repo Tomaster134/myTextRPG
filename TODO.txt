@@ -21,7 +21,7 @@ Website:
 User Interface:
     ->Add some basic UI stuff. Health, location, MAYBE an inventory sidebar
     ->Figure out why TF pressing enter doesn't enter your input -COMPLETED
-    ->Add map to game interface
+    ->Add map to game interface -COMPLETED
 
 Databases:
     ->SQL or NoSQL?

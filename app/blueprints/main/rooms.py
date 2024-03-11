@@ -82,7 +82,8 @@ room_dict = {
         'description': 'A foreboding forest. You feel the trees pressing down above you, and every noise makes you twitch in fear.',
         'position': '1,-1',
         'exits': {
-            'west': '0,-1'
+            'west': '0,-1',
+            'east': '2,-1',
         },
         'icon': '<span style="background-color:olivedrab">Tt</span>',
         'ambiance_list': ['A twig snaps, and your heart jumps.', 'You see a dark shape flit through the trees.']
@@ -106,7 +107,17 @@ room_dict = {
         },
         'icon': '<span style="background-color:linen">^^</span>',
         'ambiance_list': ['A servant runs past, clearly in hurry.', 'You can hear someone get berated for their poor cleaning job.']
-    }
+    },
+    (2,-1): {
+        'name': 'Forest',
+        'description': 'A foreboding forest. You feel the trees pressing down above you, and every noise makes you twitch in fear.',
+        'position': '2,-1',
+        'exits': {
+            'west': '1,-1'
+        },
+        'icon': '<span style="background-color:olivedrab">Tt</span>',
+        'ambiance_list': ['A twig snaps, and your heart jumps.', 'You see a dark shape flit through the trees.']
+    },
 }
 
 # rooms = {}

@@ -64,7 +64,7 @@ def look(player, room, data=''):
 
 #These are primarily test functions to make sure the world timer is functional
 def test(player, data):
-    player.location_map()
+    pass
 
 def save(player, player_id, sid, location, data):
     events.world.world_save()
