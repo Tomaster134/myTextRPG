@@ -13,11 +13,9 @@ const createMap = (map) => {
     </div>
     `;
   mapBox.innerHTML = content;
-  console.log('map triggered')
-  console.log(map)
 };
 
-const createLook = (msg) => {
+const createEvent = (msg) => {
   const content = `
     <div class="text">
         <span class="msg-text">
@@ -41,7 +39,7 @@ socketio.on("map", (data) => {
 });
 
 socketio.on("event", (data) => {
-  createLook(data.message);
+  createEvent(data.message);
 });
 
 //This section needs to be revamped to parse user input and package it in a uniform way so the server can handle input properly
