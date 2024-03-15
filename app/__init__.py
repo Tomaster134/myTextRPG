@@ -9,14 +9,17 @@ from flask_login import LoginManager
 from app.models import db, User
 from flask_migrate import Migrate
 import logging
+from flask_session import Session
+from flask_cors import CORS
 
 #Creates a server object that is used to wrap the app for websocket functionality
-socketio = SocketIO()
+socketio = SocketIO(cors_allowed_origins='http://localhost:5173', logger=True, always_connect=True)
 
 #function that gets called when flask app is built
 def create_app():
     logging.basicConfig(filename='record.log', level=logging.DEBUG) #Includes logging functionality
     app = Flask(__name__)
+    
     app.config.from_object(Config) #Loading in config file
 
     login_manager = LoginManager() 
@@ -33,9 +36,11 @@ def create_app():
     #Importing blueprints
     from app.blueprints.main import main, events, commands, objects
     from app.blueprints.auth import auth
+    from app.blueprints.api import api, routes
 
     app.register_blueprint(main)
     app.register_blueprint(auth)
+    app.register_blueprint(api)
 
     #Adds current_user to global variables
     @login_manager.user_loader
@@ -52,6 +57,8 @@ def create_app():
         app.app.logger.error("Error log info")
         app.app.logger.critical("Critical log info")
         return "testing logging levels."
+    
+    CORS(app, supports_credentials=True)
 
     #Wraps app in websocket functionality
     socketio.init_app(app)
