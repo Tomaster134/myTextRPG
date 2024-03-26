@@ -8,7 +8,8 @@ npc_dict = {
         'deceased': False,
         'health': 100,
         'level': 1,
-        'ambiance_list': ['The Town Crier yells "Murder in the forest! B\'ware!"', 'The Town Crier yawns and scratches himself.','You hear the Town Crier mutter "Why is it always murder? Nobody ever wants to hear about the ducks."']
+        'ambiance_list': ['The Town Crier yells "Murder in the forest! B\'ware!"', 'The Town Crier yawns and scratches himself.','You hear the Town Crier mutter "Why is it always murder? Nobody ever wants to hear about the ducks."'],
+        'can_wander': True,
     },
     'Mayor': {
         'name': 'The Mayor',
@@ -19,6 +20,7 @@ npc_dict = {
         'deceased': False,
         'health': 200,
         'level': 10,
-        'ambiance_list': ['The Mayor snaps at a servant, demanding wine.', 'The Mayor chuckles to himself, at a joke only he knows.', 'The Mayor looks askance at the dirt you tracked in from the outdoors.']
-    }
+        'ambiance_list': ['The Mayor snaps at a servant, demanding wine.', 'The Mayor chuckles to himself, at a joke only he knows.', 'The Mayor looks askance at the dirt you tracked in from the outdoors.'],
+        'can_wander': False,
+    },
 }

@@ -20,7 +20,7 @@ class World():
 
         npcs = {}
         for npc in npc_file.npc_dict.values():
-            new_npc = NPC(npc['name'], npc['aliases'], npc['description'], npc['deceased'], npc['health'], npc['level'], npc['location'], npc['home'], npc['ambiance_list'])
+            new_npc = NPC(npc['name'], npc['aliases'], npc['description'], npc['deceased'], npc['health'], npc['level'], npc['location'], npc['home'], npc['ambiance_list'], npc['can_wander'])
             self.rooms[new_npc.location].contents['NPCs'].update({new_npc.id: new_npc})
             npcs.update({new_npc.id: new_npc})
         self.npcs = npcs
@@ -290,7 +290,7 @@ class Player(Character):
 #Class that is controlled by the server. Capable of being interacted with.
 class NPC(Character):
     id = itertools.count()
-    def __init__(self, name, aliases, description, deceased, health, level, location, home, ambiance_list, stats=dict(default_stats)) -> None:
+    def __init__(self, name, aliases, description, deceased, health, level, location, home, ambiance_list, can_wander, stats=dict(default_stats)) -> None:
         self.id = next(NPC.id)
         self.name = name
         self.aliases = aliases
@@ -301,11 +301,32 @@ class NPC(Character):
         self.location = location
         self.home = home #Spawn location if NPC is killed. Can also double as a bound to prevent NPC from wandering too far from home during world timer movement
         self.ambiance_list = ambiance_list
+        self.can_wander = can_wander
         self.inventory = []
 
     def ambiance(self):
-        if randint(1,5) == 5:
+        numb = randint(1,5)
+        if numb == 5:
             socketio.emit('event', {'message': f'{self.ambiance_list[randint(0,len(self.ambiance_list)-1)]}'}, to=self.location)
+        elif numb == 4:
+            if self.can_wander:
+                lon, lat = self.location.split(',', 1)
+                lon = int(lon)
+                lat = int(lat)
+                move_x = randint(-1,1)
+                move_y = randint(-1,1)
+                lon += move_x
+                lat += move_y
+                new_location = f'{lon},{lat}'
+                for direction, coords in events.world.rooms[self.location].exits.items():
+                    if new_location == coords:
+                        socketio.emit('event', {'message': f'{self.name} wanders away towards the {direction}.'}, to=self.location)
+                        del events.world.rooms[self.location].contents['NPCs'][self.id]
+                        self.location=new_location
+                        events.world.rooms[self.location].contents['NPCs'].update({self.id: self})
+                        socketio.emit('event', {'message': f'{self.name} wanders in.'}, to=self.location)
+                        break
+
 
 
 #Class that is incapable of autonomous action. Inanimate objects and such.

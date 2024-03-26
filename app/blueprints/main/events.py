@@ -9,6 +9,21 @@ import dill
 #Socket IO events, should only be three. On connection, on disconnect, and whenever data is sent
 client_list = [] #List of clients currently connected
 world = objects.World() #Instatiating world class to hold all rooms, players, and characters
+
+def world_timer():
+     print('world timer triggered')
+     socketio.sleep(10)
+     while True:
+            print('world timer active')
+            if client_list:
+                socketio.sleep(10)
+                for character in world.npcs.values():
+                     character.ambiance()
+                for room in world.rooms.values():
+                     room.ambiance()
+            else: break
+
+
 #This is an event that occurs whenever a new connection is detected by the socketio server. Connection needs to properly connect the user with their Player object, update the Player object's session_id so private server emits can be transmitted to that player only
 @socketio.on('connect')
 def connect(auth):
@@ -27,6 +42,8 @@ def connect(auth):
     player.session_id = request.sid
     client_list.append(player.session_id)
     world.players.update({player.id: player})
+    if client_list:
+        socketio.start_background_task(world_timer)
     print(f'client list is {client_list}')
     print(f'players connected is {world.players}')
     session['player_id'] = player.id
