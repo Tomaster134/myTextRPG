@@ -2,6 +2,7 @@ from . import api
 from flask import request, jsonify, session
 from app.models import User, PlayerAccount
 from werkzeug.security import check_password_hash
+from sqlalchemy import exc
 
 @api.post('/login')
 def login_api():
@@ -31,6 +32,34 @@ def login_api():
             'status': 'login error',
             'message': 'username or password did not match'
         })
+    
+@api.post('/signup')
+def signup_api():
+    '''
+    payload should include:
+    {
+    "username": string,
+    "email": string,
+    "password": string,
+    }
+    '''
+
+    data = request.get_json()
+    username = data['username']
+    email = data['email']
+    password = data['password']
+    try:
+        new_user = User(username, email, password)
+        new_user.save()
+        return jsonify({
+                'status': 'ok',
+                'message': 'signup successful'
+                })
+    except exc.IntegrityError:
+        return jsonify({
+            'status': 'error',
+            'message': 'username or email taken'
+        })
 
 @api.post('/user_pull')
 def user_pull_api():
@@ -41,7 +70,6 @@ def user_pull_api():
     }'''
 
     data = request.get_json()
-    print(session)
     user_id = data['user_id']
     queried_user = User.query.filter(User.id == user_id).first()
     if queried_user:

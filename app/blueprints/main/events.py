@@ -28,6 +28,7 @@ def world_timer():
 @socketio.on('connect')
 def connect(auth):
     session['user_id'] = auth
+    print(session['user_id'])
     current_user = User.query.filter(User.id == auth).first()
     active_player = current_user.accounts.filter(PlayerAccount.is_active == True).first() #Pulls the active player information
     if not active_player.player_info: #Checks to see if the active player is a new player

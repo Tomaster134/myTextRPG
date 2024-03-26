@@ -9,7 +9,6 @@ from flask_login import LoginManager
 from app.models import db, User
 from flask_migrate import Migrate
 import logging
-from flask_session import Session
 from flask_cors import CORS
 
 #Creates a server object that is used to wrap the app for websocket functionality
