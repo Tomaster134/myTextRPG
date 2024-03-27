@@ -196,55 +196,55 @@ class Player(Character):
                     try:
                         self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
                     except KeyError:
-                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span>')
+                        self_map.append('<span class="map-square" style="background-color: tan">&nbsp;&nbsp;</span>')
                 if i == 2:
                     lat += 1
                     try:
                         self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
                     except KeyError:
-                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span>')
+                        self_map.append('<span class="map-square" style="background-color: tan">&nbsp;&nbsp;</span>')
                 if i == 3:
                     lat += 1
                     lon += 1
                     try:
                         self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}<br>')
                     except KeyError:
-                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span><br>')
+                        self_map.append('<span class="map-square" style="background-color: tan">&nbsp;&nbsp;</span><br>')
                 if i == 4:
                     lon -= 1
                     try:
                         self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
                     except KeyError:
-                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span>')
+                        self_map.append('<span class="map-square" style="background-color: tan">&nbsp;&nbsp;</span>')
                 if i == 5:
-                    self_map.append('<span style="background-color:LightBlue; color: DodgerBlue">()</span>')
+                    self_map.append('<span class="map-square" style="background-color:LightBlue; color: DodgerBlue">()</span>')
                 if i == 6:
                     lon += 1
                     try:
                         self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}<br>')
                     except KeyError:
-                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span><br>')
+                        self_map.append('<span class="map-square" style="background-color: tan">&nbsp;&nbsp;</span><br>')
                 if i == 7:
                     lat -= 1
                     lon -= 1
                     try:
                         self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
                     except KeyError:
-                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span>')
+                        self_map.append('<span class="map-square" style="background-color: tan">&nbsp;&nbsp;</span>')
                 if i == 8:
                     lat -= 1
                     try:
                         self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
                     except KeyError:
-                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span>')
+                        self_map.append('<span class="map-square" style="background-color: tan">&nbsp;&nbsp;</span>')
                 if i == 9:
                     lat -= 1
                     lon += 1
                     try:
                         self_map.append(f'{events.world.rooms[f"{lon},{lat}"].icon}')
                     except KeyError:
-                        self_map.append('<span style="background-color: tan">&nbsp;&nbsp;</span>')
-        output = '<tt style="margin-bottom: 0">'
+                        self_map.append('<span class="map-square" style="background-color: tan">&nbsp;&nbsp;</span>')
+        output = '<tt class="map-square" style="margin-bottom: 0">'
         for icon in self_map:
             output += icon
         output += '</tt>'

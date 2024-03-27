@@ -9,7 +9,7 @@ room_dict = {
             'east': '1,0',
             'west': '-1,0'
         },
-        'icon': '<span style="background-color:white; color:black">()</span>',
+        'icon': '<span class="map-square" style="background-color:white; color:black">()</span>',
         'ambiance_list': ['People move around you, busy about their day', 'The local town drunk stumbles by, muttering to people nobody sees.']
     },
     (0,1): {
@@ -21,7 +21,7 @@ room_dict = {
             'east': '1,1',
             'west': '-1,1'
         },
-        'icon': '<span style="background-color:cornsilk; color: black">/\\</span>',
+        'icon': '<span class="map-square" style="background-color:cornsilk; color: black">/\\</span>',
         'ambiance_list': ['You hear a heated argument from the east.', 'A small rodent scurries by your feet.']
     },
     (0,-1): {
@@ -33,7 +33,7 @@ room_dict = {
             'east': '1,-1',
             'west': '-1,-1'
         },
-        'icon': '<span style="background-color:gainsboro">||</span>',
+        'icon': '<span class="map-square" style="background-color:gainsboro">||</span>',
         'ambiance_list': ['A rabbit hops past, small and furry.', 'A light breeze stirs your shirt.']
     },
     (1,0): {
@@ -43,7 +43,7 @@ room_dict = {
         'exits': {
             'west': '0,0'
         },
-        'icon': '<span style="background-color:lightgreen">_^</span>',
+        'icon': '<span class="map-square" style="background-color:lightgreen">_^</span>',
         'ambiance_list': ['A small child wanders past, looking for something.', 'A wagon clatters in the distance.']
     },
     (-1,0): {
@@ -53,7 +53,7 @@ room_dict = {
         'exits': {
             'east': '0,0'
         },
-        'icon': '<span style="background-color:indianred">Br</span>',
+        'icon': '<span class="map-square" style="background-color:indianred">Br</span>',
         'ambiance_list': ['The sound of clanging metal and shouts can be faintly heard.', 'A local town guard eyes you, wondering what your business is.']
     },
     (-1,1): {
@@ -64,7 +64,7 @@ room_dict = {
             'east': '0,1',
             'in': 'Mayoral Mansion'
         },
-        'icon': '<span style="background-color:mintcream; color: black">^^</span>',
+        'icon': '<span class="map-square" style="background-color:mintcream; color: black">^^</span>',
         'ambiance_list': ['You can hear a distant wind chime.', 'A man pushing a small hand cart full of groceries hurries by, head bent.']
     },
     (1,1): {
@@ -74,7 +74,7 @@ room_dict = {
         'exits': {
             'west': '0,1'
         },
-        'icon': '<span style="background-color:gray">oo</span>',
+        'icon': '<span class="map-square" style="background-color:gray">oo</span>',
         'ambiance_list': ['You can faintly hear someone arguing about the price of goods from inside.', 'You see a group of adolescents making fun of you.']
     },
     (1,-1): {
@@ -85,7 +85,7 @@ room_dict = {
             'west': '0,-1',
             'east': '2,-1',
         },
-        'icon': '<span style="background-color:olivedrab">Tt</span>',
+        'icon': '<span class="map-square" style="background-color:olivedrab">Tt</span>',
         'ambiance_list': ['A twig snaps, and your heart jumps.', 'You see a dark shape flit through the trees.']
     },
     (-1,-1): {
@@ -95,7 +95,7 @@ room_dict = {
         'exits': {
             'east': '0,-1',
         },
-        'icon': '<span style="background-color:mediumblue">~~</span>',
+        'icon': '<span class="map-square" style="background-color:mediumblue">~~</span>',
         'ambiance_list': ['Birds chirp overhead.', 'The sound of the lake lapping at the shore make you want to close your eyes.']
     },
     'Mayoral Mansion': {
@@ -105,7 +105,7 @@ room_dict = {
         'exits': {
             'out': '-1,1',
         },
-        'icon': '<span style="background-color:linen">^^</span>',
+        'icon': '<span class="map-square" style="background-color:linen">^^</span>',
         'ambiance_list': ['A servant runs past, clearly in hurry.', 'You can hear someone get berated for their poor cleaning job.']
     },
     (2,-1): {
@@ -115,7 +115,7 @@ room_dict = {
         'exits': {
             'west': '1,-1'
         },
-        'icon': '<span style="background-color:olivedrab">Tt</span>',
+        'icon': '<span class="map-square" style="background-color:olivedrab">Tt</span>',
         'ambiance_list': ['A twig snaps, and your heart jumps.', 'You see a dark shape flit through the trees.']
     },
 }

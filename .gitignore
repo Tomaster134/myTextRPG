@@ -3,3 +3,5 @@ __pycache__/
 migrations/
 .env
 record.log
+/.vscode
+test.sql
