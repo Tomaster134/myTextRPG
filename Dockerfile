@@ -8,6 +8,7 @@ WORKDIR /app
 COPY remote_requirements.txt .
 
 # Install the required Python packages
+RUN pip install psycopg2-binary
 RUN pip install -r remote_requirements.txt
 
 # Copy the rest of the application code into the container
