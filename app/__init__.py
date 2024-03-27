@@ -12,7 +12,7 @@ import logging
 from flask_cors import CORS
 
 #Creates a server object that is used to wrap the app for websocket functionality
-socketio = SocketIO(cors_allowed_origins='http://localhost:5173', logger=True, always_connect=True)
+socketio = SocketIO(cors_allowed_origins='http://localhost:8080', logger=True, always_connect=True)
 
 #function that gets called when flask app is built
 def create_app():
